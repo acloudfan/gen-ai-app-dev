@@ -1,0 +1,63 @@
+Title
+What is generative AI?
+
+Source
+https://aws.amazon.com/what-is/generative-ai/
+
+What is generative AI?
+Generative artificial intelligence (generative AI) is a type of AI that can create new content and ideas, including conversations, stories, images, videos, and music. AI technologies attempt to mimic human intelligence in nontraditional computing tasks like image recognition, natural language processing (NLP), and translation. Generative AI is the next step in artificial intelligence. You can train it to learn human language, programming languages, art, chemistry, biology, or any complex subject matter. It reuses training data to solve new problems. For example, it can learn English vocabulary and create a poem from the words it processes. Your organization can use generative AI for various purposes, like chatbots, media creation, and product development and design.
+
+Why is generative AI important?
+Generative AI applications like ChatGPT have captured widespread attention and imagination. They can help reinvent most customer experiences and applications, create new applications never seen before, and help customers reach new productivity levels.
+
+According to Goldman Sachs, generative AI could drive a 7 percent (or almost $7 trillion) increase in global gross domestic product (GDP). They also anticipate it could lift productivity growth by 1.5 percentage points over 10 years.
+
+Next, we give some more benefits of generative AI.
+
+Accelerates research
+Generative AI algorithms can explore and analyze complex data in new ways. So, researchers can discover new trends and patterns that may not be otherwise apparent. These algorithms can summarize content, outline multiple solution paths, brainstorm ideas, and create detailed documentation from research notes. This is why generative AI drastically enhances research and innovation.
+
+For example, generative AI systems are being used in the pharma industry to generate and optimize protein sequences and significantly accelerate drug discovery.
+
+Enhances customer experience
+Generative AI can respond naturally to human conversation and serve as a tool for customer service and personalization of customer workflows.
+
+For example, you can use AI-powered chatbots, voice bots, and virtual assistants that respond more accurately to customers for first-contact resolution. They can increase customer engagement by presenting curated offers and communication in a personalized way.
+
+Optimizes business processes
+With generative AI, your business can optimize business processes utilizing machine learning (ML) and AI applications across all lines of business. You can apply the technology across all lines of business, including engineering, marketing, customer service, finance, and sales.
+
+For example, here's what generative AI can do for optimization:
+
+Extract and summarize data from any source for knowledge search functions
+Evaluate and optimize different scenarios for cost reduction in areas like marketing, advertising, finance, and logistics
+Generate synthetic data to create labeled data for supervised learning and other ML processes
+Boosts employee productivity
+Generative AI models can augment employee workflows and act as efficient assistants for everyone in your organization. They can do everything from searching to creation in a human-like way.
+
+Generative AI can boost productivity for different kinds of workers:
+
+Support creative tasks by generating multiple prototypes based on certain inputs and constraints. It can also optimize existing designs based on human feedback and specified constraints.
+Generate new software code suggestions for application development tasks.
+Support management by generating reports, summaries, and projections.
+Generate new sales scripts, email content, and blogs for marketing teams
+You can save time, reduce costs, and enhance efficiency across your organization.
+
+How does generative AI work?
+Like all artificial intelligence, generative AI works by using machine learning models—very large models that are pretrained on vast amounts of data.
+
+Foundation models
+Foundation models (FMs) are ML models trained on a broad spectrum of generalized and unlabeled data. They're capable of performing a wide variety of general tasks.
+
+FMs are the result of the latest advancements in a technology that has been evolving for decades. In general, an FM uses learned patterns and relationships to predict the next item in a sequence.
+
+For example, with image generation, the model analyzes the image and creates a sharper, more clearly defined version of the image. Similarly, with text, the model predicts the next word in a string of text based on the previous words and their context. It then selects the next word using probability distribution techniques.
+
+Large language models
+Large language models (LLMs) are one class of FMs. For example, OpenAI's generative pre-trained transformer (GPT) models are LLMs. LLMs are specifically focused on language-based tasks such as such as summarization, text generation, classification, open-ended conversation, and information extraction.
+
+Read about GPT »
+
+What makes LLMs special is their ability to perform multiple tasks. They can do this because they contain many parameters that make them capable of learning advanced concepts.
+
+An LLM like GPT-3 can consider billions of parameters and has the ability to generate content from very little input. Through their pretraining exposure to internet-scale data in all its various forms and myriad patterns, LLMs learn to apply their knowledge in a wide range of contexts.

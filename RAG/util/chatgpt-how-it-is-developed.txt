@@ -1,0 +1,71 @@
+Title
+How ChatGPT and our language models are developed
+
+Source
+https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-language-models-are-developed
+
+
+Abstract
+OpenAI’s large language models, including the models that power ChatGPT, are developed using three primary sources of information: (1) information that is publicly available on the internet, (2) information that we license from third parties, and (3) information that our users or our human trainers provide.
+
+This article provides an overview of the publicly available information we use to help develop our models and how we collect and use that information in compliance with privacy laws. To understand how we collect and use information from users of our services, including how to opt out of having ChatGPT conversations used to help teach our models, please see our Privacy Policy and this help center article.
+
+ 
+
+What is ChatGPT, and how does it work?
+ChatGPT is an artificial intelligence-based service that you can access via the internet. You can use ChatGPT to organize or summarize text, or to write new text. ChatGPT has been developed in a way that allows it to understand and respond to user questions and instructions. It does this by “reading” a large amount of existing text and learning how words tend to appear in context with other words. It then uses what it has learned to predict the next most likely word that might appear in response to a user request, and each subsequent word after that. This is similar to auto-complete capabilities on search engines, smartphones, and email programs.
+
+ 
+
+As an example, during the model learning process (called “training”), we might have a model try to complete the sentence: “instead of turning left, she turned ___.” Before training, the model will respond with random words, but as it reads and learns from many lines of text, it better understands this type of sentence and can predict the next word more accurately. It then repeats this process across a very large number of sentences.
+
+ 
+
+Because there are many possible words that could come next in this sentence (e.g., instead of turning left, she turned “right,” “around,” or “back”), there is an element of randomness in the way a model can respond, and in many cases our models will answer the same question in different ways.
+
+ 
+
+Machine learning models are made up of large strings of numbers, called “weights” or “parameters,” and code that interprets and executes those numbers. Models do not contain or store copies of information that they learn from. Instead, as a model learns, some of the numbers that make up the model change slightly to reflect what it has learned. In the example above, the model read information that helped it improve from predicting random incorrect words to predicting more accurate words, but all that actually happened in the model itself was that the numbers changed slightly. The model did not store or copy the sentences that it read.
+
+ 
+
+What type of information is used to teach ChatGPT?
+As noted above, ChatGPT and our other services are developed using (1) information that is publicly available on the internet, (2) information that we license from third parties, and (3) information that our users or human trainers provide. This article focuses on the first set: information that is publicly available on the internet.
+
+ 
+
+For this set of information, we only use publicly available information that is freely and openly available on the Internet – for example, we do not seek information behind paywalls or from the “dark web.” We apply filters and remove information that we do not want our models to learn from or output, such as hate speech, adult content, sites that primarily aggregate personal information, and spam. We then use the information to teach our models.
+
+ 
+
+As mentioned in the previous section, ChatGPT does not copy or store training information in a database. Instead, it learns about associations between words, and those learnings help the model update its numbers/weights. The model then uses those weights to predict and generate new words in response to a user request. It does not “copy and paste” training information – much like a person who has read a book and sets it down, our models do not have access to training information after they have learned from it.
+
+ 
+
+Is personal information used to teach ChatGPT?
+A large amount of data on the internet relates to people, so our training information does incidentally include personal information. We don’t actively seek out personal information to train our models.
+
+ 
+
+We use training information only to help our models learn about language and how to understand and respond to it. We do not and will not use any personal information in training information to build profiles about people, to contact them, to advertise to them, to try to sell them anything, or to sell the information itself.
+
+ 
+
+Our models may learn from personal information to understand how things like names and addresses fit within language and sentences, or to learn about famous people and public figures. This makes our models better at providing relevant responses.
+
+ 
+
+We also take steps to reduce the processing of personal information when training our models. For example, we remove websites that aggregate large volumes of personal information and we try to train our models to reject requests for private or sensitive information about people.
+
+ 
+
+How does the development of ChatGPT comply with privacy laws?
+We use training information lawfully. Large language models have many applications that provide significant benefits and are already helping people create content, improve customer service, develop software, customize education, support scientific research, and much more. These benefits cannot be realized without a large amount of information to teach the models. In addition, our use of training information is not meant to negatively impact individuals, and the primary sources of this training information are already publicly available. For these reasons, we base our collection and use of personal information that is included in training information on legitimate interests under privacy laws like the GDPR, as explained in more detail in our Privacy Policy. We have also completed a data protection impact assessment to help ensure we are collecting and using this information legally and responsibly.
+
+ 
+
+We respond to objection requests and similar rights. As a result of learning language, ChatGPT responses may sometimes include personal information about individuals whose personal information appears multiple times on the public internet (for example, public figures). Individuals in certain jurisdictions can object to the processing of their personal information by our models in our Privacy Portal. Individuals also may have the right to access, correct, restrict, delete, or transfer their personal information that may be included in our training information. You can exercise these rights by reaching out to dsar@openai.com.
+
+ 
+
+Please be aware that, in accordance with privacy laws, some rights may not be absolute. We may decline a request if we have a lawful reason for doing so. However, we strive to prioritize the protection of personal information, and comply with all applicable privacy laws. If you feel we have not adequately addressed an issue, you have the right to lodge a complaint with your local supervisory authority.
