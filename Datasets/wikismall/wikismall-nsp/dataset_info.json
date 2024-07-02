@@ -1,0 +1,28 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "id_1": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "sentence_1": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "id_2": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "sentence_2": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "label": {
+      "dtype": "int64",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}
