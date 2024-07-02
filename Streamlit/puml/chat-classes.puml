@@ -1,0 +1,14 @@
+@startuml
+
+' ' https://docs.streamlit.io/develop/api-reference/chat/st.chat_input
+' class chat_input{}
+
+' ' https://docs.streamlit.io/develop/api-reference/chat/st.chat_message
+' class chat_message{
+'     write(string)
+' }
+
+' https://docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state
+class session_state{}
+
+@enduml
