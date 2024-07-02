@@ -1,0 +1,10 @@
+@startuml
+
+' https://api.python.langchain.com/en/latest/retrievers/langchain_core.retrievers.BaseRetriever.html#langchain_core.retrievers.BaseRetriever
+class BaseRetriever{
+    get_relevant_documents(query)
+    ---
+    ...
+}
+
+@enduml

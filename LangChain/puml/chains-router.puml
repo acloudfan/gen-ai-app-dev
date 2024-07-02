@@ -1,0 +1,23 @@
+@startuml
+
+package langchain {
+
+    package chains {
+
+        package router {
+            ' https://api.python.langchain.com/en/stable/chains/langchain.chains.router.base.MultiRouteChain.html#langchain.chains.router.base.MultiRouteChain
+            class MultiPromptChain{
+
+            }
+
+            package llm_router {
+                ' https://api.python.langchain.com/en/stable/chains/langchain.chains.router.llm_router.LLMRouterChain.html#langchain.chains.router.llm_router.LLMRouterChain
+                class LLMRouterChain{}
+                ' https://api.python.langchain.com/en/stable/chains/langchain.chains.router.llm_router.RouterOutputParser.html#langchain.chains.router.llm_router.RouterOutputParser
+                class RouterOutputParser{}
+            }
+        }
+    }
+}
+
+@enduml

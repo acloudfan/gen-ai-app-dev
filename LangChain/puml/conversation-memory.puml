@@ -1,0 +1,26 @@
+@startuml
+
+' https://python.langchain.com/docs/modules/memory/
+' https://api.python.langchain.com/en/latest/langchain_api_reference.html#module-langchain.memory
+
+' https://api.python.langchain.com/en/latest/memory/langchain.memory.buffer.ConversationBufferMemory.html
+' Raw input/output in a list
+class ConversationBufferMemory{}
+
+' https://api.python.langchain.com/en/latest/memory/langchain.memory.buffer.ConversationStringBufferMemory.html
+' class ConversationStringBufferMemory{}
+
+' https://api.python.langchain.com/en/latest/memory/langchain.memory.summary.ConversationSummaryMemory.html#langchain.memory.summary.ConversationSummaryMemory
+class ConversationSummaryMemory{}
+
+' https://api.python.langchain.com/en/latest/memory/langchain.memory.buffer_window.ConversationBufferWindowMemory.html#langchain.memory.buffer_window.ConversationBufferWindowMemory
+class ConversationBufferWindowMemory{}
+
+' https://api.python.langchain.com/en/latest/chains/langchain.chains.conversation.base.ConversationChain.html#langchain.chains.conversation.base.ConversationChain
+class ConversationChain{}
+
+ConversationChain ..> ConversationBufferMemory  
+ConversationChain ..> ConversationSummaryMemory
+ConversationChain ..> ConversationBufferWindowMemory
+
+@enduml

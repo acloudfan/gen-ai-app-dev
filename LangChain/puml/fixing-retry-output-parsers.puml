@@ -1,0 +1,31 @@
+@startuml
+
+package langchain.output_parsers{
+    ' https://python.langchain.com/docs/modules/model_io/output_parsers/types/output_fixing
+    class OutputFixingParser {
+        max_retries
+
+        from_llm(parser, llm)
+
+        parse(str)
+    }
+
+    class RetryOutputParser  {
+        max_retries
+
+        from_llm(parser, llm)
+
+        parse_with_prompt(str,prompt)
+    }
+
+        ' https://api.python.langchain.com/en/stable/output_parsers/langchain.output_parsers.retry.RetryOutputParser.html#
+    class RetryWithErrorOutputParser {
+        max_retries
+
+        from_llm(parser, llm)
+
+        parse_with_prompt(str, prompt)
+    }
+}
+
+@enduml

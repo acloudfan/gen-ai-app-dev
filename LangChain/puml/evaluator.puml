@@ -1,0 +1,40 @@
+' https://api.python.langchain.com/en/stable/evaluation/langchain.evaluation.schema.EvaluatorType.html#langchain.evaluation.schema.EvaluatorType
+
+@startuml
+
+' https://python.langchain.com/docs/guides/evaluation/
+package langchain.evaluation{
+
+    class EmbeddingDistance{
+        COSINE
+        EUCLIDEAN
+        MANHATTAN
+        CHEBYSHEV
+        HAMMING
+    }
+
+    class EvaluatorType{
+        <multiple evaluator types>
+    }
+
+    class load_evaluator {
+        evaluator_type
+        model
+
+        ---
+
+        
+    }
+
+    class PairwiseEmbeddingDistanceEvalChain {
+        evaluate_string(str1, str2, distance_metric)
+    }
+
+    load_evaluator ..> EvaluatorType  : uses >
+
+    PairwiseEmbeddingDistanceEvalChain ..> EmbeddingDistance : use distance metric >
+
+    load_evaluator ..> PairwiseEmbeddingDistanceEvalChain : creates instance >
+}  
+
+@enduml

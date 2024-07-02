@@ -1,0 +1,36 @@
+@startuml
+
+' https://api.python.langchain.com/en/stable/text_splitter/langchain.text_splitter.TextSplitter.html#langchain.text_splitter.TextSplitter.split_documents
+' package text_splitter {
+    class RecusriveCharacterTextSplitter{
+        ' Maximum size of chunks to return
+        chunk_size 
+        ' Overlap in characters between chunks
+        chunk_overlap 
+        ' Function that measures the length of given chunks
+        length_function 
+        ' Whether to keep the separator in the chunks
+        keep_separator 
+        ' If True, includes chunk’s start index in metadata
+        add_start_index 
+        ' If True, strips whitespace from the start and end of every document
+        strip_whitespace 
+        ---
+        split_documents(documents)
+
+        split_text(text)
+
+        ' from_tiktoken_encoder(documents)
+    }
+
+    ' class RecusriveCharacterTextSplitter{}
+    ' RecusriveCharacterTextSplitter --|> TextSplitter
+
+    ' class CharacterTextSplitter{}
+    ' CharacterTextSplitter --|> TextSplitter
+
+    
+' }
+
+
+@enduml

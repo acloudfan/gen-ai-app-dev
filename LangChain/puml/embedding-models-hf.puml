@@ -1,0 +1,20 @@
+' https://api.python.langchain.com/en/latest/community_api_reference.html#
+
+@startuml
+
+' Base model
+' https://api.python.langchain.com/en/stable/embeddings/langchain_core.embeddings.Embeddings.html#
+class embeddings.Embeddings{
+    embed_documents(list[str])
+
+    embed_query(text)
+}
+
+class huggingface.HuggingFaceEmbeddings{}
+class huggingface.HuggingFaceInferenceAPIEmbeddings{}
+' class embeddings.huggingface_hub.HuggingFaceHubEmbeddings{}
+
+huggingface.HuggingFaceEmbeddings --|> embeddings.Embeddings
+huggingface.HuggingFaceInferenceAPIEmbeddings--|> embeddings.Embeddings
+
+@enduml

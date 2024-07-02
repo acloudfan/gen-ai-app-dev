@@ -1,0 +1,47 @@
+@startuml
+
+' https://api.python.langchain.com/en/stable/langchain_api_reference.html#module-langchain.output_parsers
+' https://python.langchain.com/docs/modules/model_io/output_parsers/
+package langchain.output_parsers {
+
+    
+    ' https://python.langchain.com/docs/modules/model_io/output_parsers/types/json
+    class JsonOutputParser{
+        get_format_instructions()
+        ---
+        parse(llm_response)
+    }
+
+    ' https://python.langchain.com/docs/modules/model_io/output_parsers/types/pydantic
+    class PydanticOutputParser{
+        get_format_instructions()
+        ---
+        parse(llm_response)
+    }
+
+
+    ' https://python.langchain.com/docs/modules/model_io/output_parsers/types/csv
+    class CommaSeparatedListOutputParser{
+        get_format_instructions()
+        ---
+        parse(llm_response)
+    }
+
+    ' https://python.langchain.com/docs/modules/model_io/output_parsers/types/enum
+    class EnumOutputParser{
+        get_format_instructions()
+        ---
+        parse(llm_response)
+    }
+
+   
+    ' https://python.langchain.com/docs/modules/model_io/output_parsers/types/structured
+    class StructuredOutputParser{
+        get_format_instructions()
+        ---
+        parse(llm_response)
+    }
+    ' class ResponseSchema{}
+}
+
+@enduml

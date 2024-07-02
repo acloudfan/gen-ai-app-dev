@@ -1,0 +1,21 @@
+@startuml
+
+' https://api.python.langchain.com/en/latest/retrievers/langchain.retrievers.contextual_compression.ContextualCompressionRetriever.html
+class ContextualCompressionRetriever{}
+
+' langchain.retrievers.document_compressors.chain_extract.LLMChainExtractor
+class LLMChainExtractor{}
+
+' https://api.python.langchain.com/en/latest/retrievers/langchain.retrievers.document_compressors.chain_filter.LLMChainFilter.html
+class LLMChainFilter{}
+
+' https://api.python.langchain.com/en/latest/retrievers/langchain.retrievers.document_compressors.embeddings_filter.EmbeddingsFilter.html
+class EmbeddingsFilter{}
+
+' https://api.python.langchain.com/en/latest/document_transformers/langchain_community.document_transformers.embeddings_redundant_filter.EmbeddingsRedundantFilter.html
+class EmbeddingsRedundantFilter{}
+
+' https://api.python.langchain.com/en/latest/retrievers/langchain.retrievers.document_compressors.base.DocumentCompressorPipeline.html
+class DocumentCompressorPipeline{}
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+
+
+package chains.agents{
+
+    ' https://api.python.langchain.com/en/latest/agents/langchain.agents.agent_toolkits.conversational_retrieval.openai_functions.create_conversational_retrieval_agent.html#langchain.agents.agent_toolkits.conversational_retrieval.openai_functions.create_conversational_retrieval_agent
+    rectangle create_conversational_retrieval_agent
+
+    ' https://api.python.langchain.com/en/latest/agents/langchain.agents.json_chat.base.create_json_chat_agent.html#langchain.agents.json_chat.base.create_json_chat_agent
+    rectangle create_json_chat_agent
+
+    ' https://api.python.langchain.com/en/latest/agents/langchain.agents.agent_toolkits.vectorstore.base.create_vectorstore_agent.html#langchain.agents.agent_toolkits.vectorstore.base.create_vectorstore_agent
+    rectangle create_vectorstore_agent
+
+    ' https://api.python.langchain.com/en/latest/agents/langchain.agents.agent_toolkits.vectorstore.base.create_vectorstore_router_agent.html#langchain.agents.agent_toolkits.vectorstore.base.create_vectorstore_router_agent
+    rectangle create_vectorstore_router_agent
+
+    ' https://api.python.langchain.com/en/latest/agents/langchain.agents.react.agent.create_react_agent.html#langchain.agents.react.agent.create_react_agent
+    rectangle create_react_agent
+
+    ' https://api.python.langchain.com/en/latest/agents/langchain.agents.structured_chat.base.create_structured_chat_agent.html#langchain.agents.structured_chat.base.create_structured_chat_agent
+    rectangle create_structured_chat_agent
+
+    ' https://api.python.langchain.com/en/latest/agents/langchain.agents.tool_calling_agent.base.create_tool_calling_agent.html#langchain.agents.tool_calling_agent.base.create_tool_calling_agent
+    rectangle create_tool_calling_agent
+
+    ' https://api.python.langchain.com/en/latest/agents/langchain.agents.self_ask_with_search.base.create_self_ask_with_search_agent.html#langchain.agents.self_ask_with_search.base.create_self_ask_with_search_agent
+    rectangle create_self_ask_with_search_agent
+
+    ' https://api.python.langchain.com/en/latest/agents/langchain.agents.xml.base.create_xml_agent.html#langchain.agents.xml.base.create_xml_agent
+    rectangle create_xml_agent
+}
+
+
+
+@enduml

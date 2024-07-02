@@ -1,0 +1,18 @@
+' https://api.python.langchain.com/en/stable/langchain_api_reference.html#module-langchain.chains
+
+@startuml
+
+package langchain.chains {
+
+    class LLMChain{}
+
+    ' Allows Single variable in LLM input
+    class SequentialChain{}    
+
+    ' Allows multiple variables in LLM input
+    class SimpleSequentialChain{} 
+
+}
+
+
+@enduml

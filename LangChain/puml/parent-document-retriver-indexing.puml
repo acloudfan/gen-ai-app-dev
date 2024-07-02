@@ -1,0 +1,11 @@
+@startuml
+
+Actor  user as user
+Database VectorStore as VectorStore
+
+user -> ParentDocumentRetriever : Chunk documents
+
+ParentDocumentRetriever -> VectorStore : Store small chunks
+
+ParentDocumentRetriever -> Storage : Store document
+@enduml

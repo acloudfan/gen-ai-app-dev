@@ -1,0 +1,19 @@
+@startuml
+
+' https://api.python.langchain.com/en/stable/chains/langchain.chains.prompt_selector.ConditionalPromptSelector.html#
+package langchain.chains.prompt_selector {
+
+    class ConditionalPromptSelector {
+
+        default_prompt
+
+        conditionals
+
+        ---
+
+        get_prompt(llm)
+
+    }
+}
+
+@enduml

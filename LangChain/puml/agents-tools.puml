@@ -1,0 +1,39 @@
+@startuml
+
+package langchain {
+    
+    ' https://api.python.langchain.com/en/stable/langchain_api_reference.html#module-langchain.agents
+    ' Agent is a class that uses an LLM to choose a sequence of actions to take.
+    ' Agents select and use Tools & Toolkits
+    package agents {
+
+        ' https://api.python.langchain.com/en/stable/agents/langchain.agents.agent_types.AgentType.html#langchain.agents.agent_types.AgentType
+        class AgentType{
+            ZERO_SHOT_REACT_DESCRIPTION
+            
+        }
+
+        class Tool {
+            name
+            description
+            func
+        }
+
+        ' https://api.python.langchain.com/en/stable/community_api_reference.html#module-langchain_community.agent_toolkits
+        ' Agent toolkits contain integrations with various resources and services.
+        ' LangChain has a large ecosystem of integrations with various external resources like local and remote file systems, APIs and databases.
+        package agent_toolkits {
+            ' https://api.python.langchain.com/en/stable/agent_toolkits/langchain_community.agent_toolkits.file_management.toolkit.FileManagementToolkit.html#langchain_community.agent_toolkits.file_management.toolkit.FileManagementToolkit
+
+            class FileManagementToolkit{}
+        }
+
+    }
+
+    ' https://api.python.langchain.com/en/stable/langchain_api_reference.html#module-langchain.tools
+    ' Each tool has a description. Agent uses the description to choose the right tool for the job.
+    package tools {
+
+    }
+}
+@enduml

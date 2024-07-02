@@ -1,0 +1,29 @@
+@startuml
+
+' https://api.python.langchain.com/en/latest/documents/langchain_core.documents.base.Document.html#langchain_core.documents.base.Document
+class Document{
+
+}
+
+package document_loaders {
+    ' ".pdf": 
+    class PyPDFLoader{
+        load()
+        load_and_split()
+    }
+    ' ".csv": 
+    class CSVLoader{}
+    class TextLoader{}
+    class JSONLoader{}
+    class UnstructuredMarkdownLoader{}
+    class UnstructuredHTMLLoader{}
+    ' ".epub": 
+    class EpubReader{}
+    ' ".docx": 
+    class UnstructuredWordDocumentLoader{}
+    ' ".doc": 
+    class UnstructuredWordDocumentLoader{}
+}
+
+
+@enduml

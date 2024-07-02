@@ -1,0 +1,19 @@
+@startuml
+
+Actor  user as user
+user -> Application : Query
+
+Application -> MultiQueryRetriever : Query
+database vectorstore as VectorStore
+
+MultiQueryRetriever -> LLM : Generate queries
+LLM -> MultiQueryRetriever : Similary queries
+MultiQueryRetriever -> VectorStore : search
+
+VectorStore -> MultiQueryRetriever : search result
+
+MultiQueryRetriever -> MultiQueryRetriever : union
+
+MultiQueryRetriever -> Application : relevant documents
+
+@enduml

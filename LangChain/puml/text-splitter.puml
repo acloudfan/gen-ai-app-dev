@@ -1,0 +1,22 @@
+@startuml
+
+' https://api.python.langchain.com/en/latest/text_splitters_api_reference.html
+' package langchain-text-splitters {
+
+    ' class TextSplitter{}
+
+    class CharacterTextSplitter{}
+
+    class RecursiveCharacterTextSplitter{}
+
+    class RecursiveJsonSplitter{}
+
+    class MarkdownHeaderTextSplitter{}
+
+    class HTMLHeaderTextSplitter{}
+
+    class PythonCodeTextSplitter{}
+' }
+
+
+@enduml

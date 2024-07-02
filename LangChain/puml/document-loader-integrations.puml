@@ -1,0 +1,19 @@
+@startuml
+
+package document_loaders {
+    ' https://python.langchain.com/docs/integrations/document_loaders
+    class S3FileLoader{}
+
+    ' https://python.langchain.com/docs/integrations/document_loaders/arxiv
+    class  ArxivLoader{}
+
+    ' https://python.langchain.com/docs/integrations/document_loaders/google_drive
+    class GoogleDriveLoader{}
+
+    ' https://python.langchain.com/docs/integrations/document_loaders/hugging_face_dataset
+    class HuggingFaceDatasetLoader{}
+
+    ' https://python.langchain.com/docs/integrations/document_loaders/github
+    class GitHub{}
+}
+@enduml

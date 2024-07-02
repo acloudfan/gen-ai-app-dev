@@ -1,0 +1,30 @@
+@startuml
+
+'  https://api.python.langchain.com/en/latest/tools/langchain_core.tools.BaseTool.html#langchain_core.tools.BaseTool
+' https://python.langchain.com/docs/modules/tools/
+class BaseTool{
+    name
+    description
+    return_direct : Boolean
+    args_schema 
+    api_wrapper
+}
+
+' https://python.langchain.com/docs/integrations/tools/
+class 
+
+
+' https://api.python.langchain.com/en/latest/tools/langchain_core.tools.BaseToolkit.html#langchain_core.tools.BaseToolkit
+' https://python.langchain.com/docs/modules/tools/toolkits/
+class BaseToolkit{
+    **Collection of tools**
+    get_tools()
+}
+
+BaseTool}|--BaseToolkit 
+
+' https://python.langchain.com/docs/modules/tools/custom_tools/
+class CustomTool{}
+CustomTool --|> BaseTool
+
+@enduml

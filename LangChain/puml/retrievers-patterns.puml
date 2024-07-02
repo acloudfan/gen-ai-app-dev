@@ -1,0 +1,27 @@
+' https://api.python.langchain.com/en/latest/langchain_api_reference.html#module-langchain.retrievers
+
+' https://api.python.langchain.com/en/latest/retrievers/langchain.retrievers.multi_query.MultiQueryRetriever.html#langchain.retrievers.multi_query.MultiQueryRetriever
+class MultiQueryRetriever{}
+
+' Retrieve small chunks then retrieve their parent documents.
+class ParentDocumentRetriever{}
+
+' Retriever that merges the results of multiple retrievers.
+class MergerRetriver{}
+
+' Retriever that ensembles the multiple retrievers.
+class EnsembleRetriver{}
+
+' Given a query, use an LLM to re-phrase it.
+class RephraseQueryRetriever{}
+
+' Retrieve from a set of multiple embeddings for the same document.
+class MultiVectorRetriever{}
+
+' Reorders the documents in the context
+class LongContextReorder{}
+
+
+
+' Retriever that uses a vector store and an LLM to generate the vector store queries.
+class SelfQueryRetriever{}

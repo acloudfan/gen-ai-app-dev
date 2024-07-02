@@ -1,0 +1,35 @@
+@startuml
+
+class LLM {
+    <<Base class>>
+
+    invoke(..)
+    ainvoke(..)
+
+    stream(..)
+    astream(..)
+
+    batch(..)
+    abatch(..)
+
+    astream_log(..)
+}
+
+class HuggingFaceHub{}
+
+class HuggingFacePipeline{}
+
+HuggingFaceHub --|> LLM
+HuggingFacePipeline --|> LLM
+
+class OpenAI {}
+
+OpenAI --|> LLM
+
+class Cohere {}
+Cohere --|> LLM
+
+class AI21{}
+AI21 --|> LLM
+
+@enduml

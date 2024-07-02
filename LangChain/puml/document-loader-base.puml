@@ -1,0 +1,21 @@
+@startuml
+
+class BaseLoader{
+    load(path)
+    load_and_split(text_splitter)
+    ---
+    ...
+}
+
+class Document {
+    metadata
+    page_content
+
+    ---
+
+    <Utility methods>
+}
+
+
+
+@enduml

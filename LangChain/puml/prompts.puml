@@ -1,0 +1,30 @@
+@startuml
+
+' https://api.python.langchain.com/en/stable/langchain_api_reference.html#module-langchain.prompts
+package langchain.prompts {
+
+    class PromptTemplate {
+        format(input variables) : String
+
+        partial(partial input variables) : PromptTemplate
+    }
+
+    ' simplifies task of providing examples
+    class FewShotPromptTemplate {
+        examples
+        example_prompt
+
+        suffix
+        prefix
+
+        example_selector
+    }
+
+
+    class ChatPromptTemplate {
+        
+    }
+
+}
+
+@enduml

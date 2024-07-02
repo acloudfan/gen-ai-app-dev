@@ -1,0 +1,17 @@
+@startuml
+
+    ' https://api.python.langchain.com/en/latest/core_api_reference.html#module-langchain_core.retrievers
+
+    ' class BaseRetriever{}
+
+    package langchain_community.retrievers {
+        ' https://api.python.langchain.com/en/latest/retrievers/langchain_community.retrievers.pubmed.PubMedRetriever.html#langchain_community.retrievers.pubmed.PubMedRetriever
+        class PubMedRetriever{}
+        class ArxivRetriever{}
+        class WikipediaRetriever{}
+        ' Relevance but not similarity search
+        class ElasticSearchBM25Retriever{}
+        class YouRetriever{}
+    }
+
+@enduml

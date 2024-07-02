@@ -1,0 +1,25 @@
+@startuml
+
+' https://api.python.langchain.com/en/latest/core_api_reference.html#module-langchain_core.vectorstores
+class VectorStoreRetriever {
+    ' Return VectorStoreRetriever initialized from this VectorStore.
+    as_retriever(**kwargs) 
+    from_documents(documents, embedding, **kwargs)
+    from_textx(texts, embedding)
+    ---
+    add_documents(documents, **kwargs)
+    delete([ids])
+    ---
+    similarity_search(query_string)
+    similarity_search_by_vector(vector)
+    max_marginal_relevance_search(query..)
+    max_marginal_relevance_search_by_vector(vector)
+    ' Return docs and relevance scores in the range [0, 1].
+    similarity_search_with_relevance_scores(query)
+    similarity_search_with_score(query_string)
+
+    ' Return docs most similar to query using specified search type.
+    search(query_string, search_type, **kwargs)
+}
+
+@enduml

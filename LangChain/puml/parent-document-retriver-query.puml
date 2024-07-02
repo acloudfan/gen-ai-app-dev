@@ -1,0 +1,15 @@
+@startuml
+
+Actor  user as user
+Database VectorStore as VectorStore
+
+user -> ParentDocumentRetriever : Query
+
+ParentDocumentRetriever -> VectorStore : Similarity search
+
+ParentDocumentRetriever -> ParentDocumentRetriever : Extract document ID
+
+ParentDocumentRetriever -> Storage : Retrieve document
+
+ParentDocumentRetriever -> user : Dcoument (instead of chunk)
+@enduml

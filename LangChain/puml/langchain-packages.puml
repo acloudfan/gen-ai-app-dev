@@ -1,0 +1,30 @@
+@startuml
+
+package langchain{
+    package prompts {
+        
+        class PromptTemplate{
+            from_template(template: String, inputs: String[])
+        }
+
+        class ChatPromptTemplate{
+            from_messages([...])
+        }
+
+    }
+    
+    ' https://python.langchain.com/docs/modules/chains
+    package chains{
+        
+    }
+}
+
+package langchain_community {
+    package HuggingFace {}
+    package OpenAI{}
+    package XXX{}
+}
+
+langchain_community --> langchain_core : uses 
+
+@enduml

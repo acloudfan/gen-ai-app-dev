@@ -1,0 +1,24 @@
+@startuml
+
+
+package chains{
+    
+    package combine_documents{
+        ' https://api.python.langchain.com/en/latest/chains/langchain.chains.combine_documents.stuff.create_stuff_documents_chain.html#langchain.chains.combine_documents.stuff.create_stuff_documents_chain
+        rectangle create_stuff_documents_chain
+
+    }
+
+    ' https://api.python.langchain.com/en/latest/chains/langchain.chains.retrieval.create_retrieval_chain.html#langchain.chains.retrieval.create_retrieval_chain
+    rectangle create_retrieval_chain
+
+    ' https://api.python.langchain.com/en/latest/chains/langchain.chains.history_aware_retriever.create_history_aware_retriever.html#langchain.chains.history_aware_retriever.create_history_aware_retriever
+    rectangle create_history_aware_retriever
+
+    ' https://api.python.langchain.com/en/latest/chains/langchain.chains.sql_database.query.create_sql_query_chain.html#langchain.chains.sql_database.query.create_sql_query_chain
+    rectangle create_sql_query_chain
+
+}
+
+
+@enduml

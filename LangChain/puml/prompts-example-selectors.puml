@@ -1,0 +1,20 @@
+@startuml
+
+' https://api.python.langchain.com/en/stable/core_api_reference.html#module-langchain_core.example_selectors
+package prompts.example_selectors {
+
+    ' Picks the full example - number of examples restricted by max_length
+    class LengthBasedExampleSelector {
+        max_length
+    }
+
+    class SemanticSimilarityExampleSelector {
+
+    }
+
+    class MaxMarginalRelevanceExampleSelector {
+
+    }
+
+
+@enduml

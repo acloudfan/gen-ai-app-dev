@@ -1,0 +1,25 @@
+' https://api.python.langchain.com/en/latest/community_api_reference.html#
+
+@startuml
+
+' Base model
+' https://api.python.langchain.com/en/stable/embeddings/langchain_core.embeddings.Embeddings.html#
+class embeddings.Embeddings{
+    embed_documents(list[str])
+
+    embed_query(text)
+}
+
+
+class cohere.CohereEmbeddings{}
+class bedrock.BedrockEmbeddings{}
+class openai.OpenAIEmbeddings{}
+class google_palm.GooglePalmEmbeddings{}
+
+
+cohere.CohereEmbeddings --|> embeddings.Embeddings
+bedrock.BedrockEmbeddings --|> embeddings.Embeddings
+openai.OpenAIEmbeddings --|> embeddings.Embeddings
+google_palm.GooglePalmEmbeddings--|> embeddings.Embeddings
+
+@enduml

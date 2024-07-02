@@ -1,0 +1,35 @@
+@startuml
+
+package embeddings {
+    ' https://python.langchain.com/docs/modules/data_connection/text_embedding/caching_embeddings
+    ' https://api.python.langchain.com/en/stable/embeddings/langchain.embeddings.cache.CacheBackedEmbeddings.html#langchain.embeddings.cache.CacheBackedEmbeddings
+    class CacheBackedEmbeddings{
+        from_bytes_store(underlying_embeddings,
+
+        document_embedding_cache,
+        
+        namespace)
+
+        ---
+
+        embed_documents(list[str])
+
+        embed_query(str)
+    }
+}
+
+package storage {
+    ' https://api.python.langchain.com/en/stable/storage/langchain.storage.in_memory.InMemoryBaseStore.html#
+    class InMemoryByteStore{}
+
+    ' https://api.python.langchain.com/en/stable/storage/langchain.storage.file_system.LocalFileStore.html#
+    class LocalFileStore{}
+
+}
+
+
+CacheBackedEmbeddings ..> LocalFileStore : uses >
+
+CacheBackedEmbeddings ..> InMemoryByteStore : uses >
+
+@enduml
