@@ -1,0 +1,20 @@
+' https://huggingface.co/docs/transformers/main_classes/data_collator
+
+@startuml
+
+class DefaultDataCollator{}
+
+' https://huggingface.co/docs/transformers/main_classes/data_collator#transformers.DataCollatorWithPadding
+class DataCollatorWithPadding{}
+
+class DataCollatorForTokenClassification{}
+
+class DataCollatorForSeq2Seq{}
+
+class DataCollatorForLanguageModeling{}
+
+class DataCollatorForPermutationLanguageModeling{}
+
+class DataCollatorForWholeWordMask{}
+
+@enduml

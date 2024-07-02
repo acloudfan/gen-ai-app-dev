@@ -1,0 +1,21 @@
+@startuml
+
+' https://huggingface.co/docs/transformers/main_classes/output
+abstract  ModelOutput
+
+class Seq2SeqModelOutput
+Seq2SeqModelOutput --|> ModelOutput
+
+class CausalLMOutput
+CausalLMOutput --|> ModelOutput
+
+class MaskedLMOutput
+MaskedLMOutput --|> ModelOutput
+
+class SequenceClassifierOutput
+SequenceClassifierOutput --|> ModelOutput
+
+class MultipleChoiceModelOutput
+MultipleChoiceModelOutput --|> ModelOutput
+
+@enduml

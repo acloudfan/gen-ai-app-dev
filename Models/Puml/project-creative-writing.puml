@@ -1,0 +1,12 @@
+@startuml
+
+
+llm_chain_generate_plan -> llm_chain_vote_plan : proposed_plans
+
+llm_chain_vote_plan -> llm_chain_generate_passages_on_best_plan : best_voted_plan_details
+
+llm_chain_generate_passages_on_best_plan -> llm_chain_vote_best_passage : generated_passages_with_best_plan
+
+llm_chain_vote_best_passage ->>o]    :  best_passage
+
+@enduml

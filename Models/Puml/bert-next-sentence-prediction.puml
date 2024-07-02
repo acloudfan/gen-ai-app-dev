@@ -1,0 +1,25 @@
+@startuml
+
+' https://huggingface.co/docs/transformers/model_doc/auto#transformers.AutoModelForNextSentencePrediction
+class AutoModelForNextSentencePrediction {
+    from_pretrained(model_name)
+}
+
+' https://huggingface.co/docs/transformers/v4.36.1/en/main_classes/output#transformers.modeling_outputs.NextSentencePredictorOutput
+class   NextSentencePredictorOutput {
+
+    loss
+    logits
+    hidden_states
+    attentions
+}
+
+' https://huggingface.co/docs/transformers/model_doc/bert#transformers.BertForNextSentencePrediction
+class BertForNextSentencePrediction {
+
+    forward(inputs, labels)
+}
+
+AutoModelForNextSentencePrediction ..> BertForNextSentencePrediction : creates >
+BertForNextSentencePrediction ..> NextSentencePredictorOutput : outputs >
+@enduml

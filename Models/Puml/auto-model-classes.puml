@@ -1,0 +1,25 @@
+@startuml
+
+' https://huggingface.co/docs/transformers/model_doc/auto
+
+abstract AutoModel {
+    from_pretrained
+}
+
+class AutoModelForCausalLM
+AutoModelForCausalLM --|> AutoModel
+
+class AutoModelForMaskedLM
+AutoModelForMaskedLM --|> AutoModel
+
+class AutoModelForSeq2SeqLM
+' AutoModelForSeq2SeqLM --|> AutoModel
+
+class AutoModelForNextSentencePrediction
+' AutoModelForNextSentencePrediction --|> AutoModel
+
+class AutoModelForQuestionAnswering
+' AutoModelForQuestionAnswering --|> AutoModel
+
+
+@enduml

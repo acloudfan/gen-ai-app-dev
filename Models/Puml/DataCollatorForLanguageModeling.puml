@@ -1,0 +1,15 @@
+@startuml
+
+' https://huggingface.co/docs/transformers/main_classes/data_collator#transformers.DataCollatorForLanguageModeling
+class DataCollatorForLanguageModeling{
+
+    tokenizer
+    ---
+    mlm: bool
+    mlm_probability
+    ---
+    pad_to_multiple_of: int
+
+}
+
+@enduml

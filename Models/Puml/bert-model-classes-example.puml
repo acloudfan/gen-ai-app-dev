@@ -1,0 +1,28 @@
+@startuml
+
+abstract        BertPreTrainedModel{
+    from_pretrained
+}
+abstract        PreTrainedConfig
+abstract        PretrainedTokenizer
+abstract        PretrainedModel 
+class           BertModel
+BertModel --|> BertPreTrainedModel
+
+BertPreTrainedModel --|> PretrainedModel
+
+class          BertConfig
+BertConfig --|> PreTrainedConfig
+
+class          BertOutput
+
+
+BertModel ..> BertConfig : uses
+
+BertModel ..> BertOutput : generates 
+
+
+BertTokenizer --|> PretrainedTokenizer
+BertModel ..> BertTokenizer : depends-on
+
+@enduml

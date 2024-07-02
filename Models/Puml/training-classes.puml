@@ -1,0 +1,46 @@
+' https://huggingface.co/docs/transformers/main_classes/trainer
+
+@startuml
+
+' https://huggingface.co/docs/transformers/v4.36.1/en/main_classes/trainer#transformers.TrainingArguments
+
+class  TrainingArguments {
+    do_train
+    do_eval
+    do_predict
+    ---
+    resume_from_checkpoint
+    output_dir
+    save_strategy
+    ---
+    eval_strategy
+    learning_rate
+    num_train_epochs
+    ---
+    ...
+}
+
+class Trainer {
+    Model: PreTrainedModel
+    args: TrainingArguments
+    ---
+    data_collator
+    ---
+    train_dataset
+    eval_dataset
+    ---
+    tokenizer
+
+    ---
+    train(resume_from_checkpoint)
+
+}
+
+' class Seq2SeqTrainer {}
+' Seq2SeqTrainer --|> Trainer
+' class Seq2SeqTrainingArguments {}
+' Seq2SeqTrainingArguments --|> TrainingArguments
+
+Trainer ..> TrainingArguments : uses >
+
+@enduml

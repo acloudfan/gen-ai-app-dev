@@ -1,0 +1,27 @@
+@startuml
+
+' https://huggingface.co/docs/transformers/v4.36.1/en/model_doc/bert#transformers.BertForMaskedLM
+
+abstract           BertPreTrainedModel{
+    from_pretrained
+}
+
+class BertForMaskedLM
+BertForMaskedLM --|> BertPreTrainedModel
+
+class BertForNextSentencePrediction
+BertForNextSentencePrediction --|> BertPreTrainedModel
+
+class BertForSequenceClassification
+BertForSequenceClassification --|> BertPreTrainedModel
+
+class BertForTokenClassification
+BertForTokenClassification --|> BertPreTrainedModel
+
+class BertForMultipleChoice
+BertForMultipleChoice --|> BertPreTrainedModel
+
+class BertForQuestionAnswering
+BertForQuestionAnswering --|> BertPreTrainedModel
+
+@enduml
