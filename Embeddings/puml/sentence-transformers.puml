@@ -1,0 +1,23 @@
+@startuml
+
+package sentence_transformers {
+
+    class SentenceTransformer {
+        encode(str)
+
+        encode(list[str])
+    }
+
+    class  util{
+        cos_sim(embed_1, embed_2)
+
+        dot_score(embed_1, embed_2)
+
+        semantic_search(query_embedding, corpus_embeddings)
+        
+        paraphrase_mining(model, list[str])
+    }
+
+}
+
+@enduml
