@@ -1,0 +1,19 @@
+@startuml
+
+class AutoModelForSequenceClassification{
+    from_pretrained(..)
+}
+
+class AutoModelForSeq2SeqLM{
+    from_pretrained(..)
+}
+
+class AutoModelForTokenClassification{
+    from_pretrained(..)
+}
+
+class AutoModelForQuestionAnswering{
+    from_pretrained(..)
+}
+
+@enduml

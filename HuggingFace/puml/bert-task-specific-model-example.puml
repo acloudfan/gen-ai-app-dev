@@ -1,0 +1,30 @@
+@startuml
+
+abstract        BertPreTrainedModel
+
+' class           BertModel
+' BertModel --|> BertPreTrainedModel
+
+' abstract       PreTrainedConfig
+
+' class          BertConfig
+' BertConfig --|> PreTrainedConfig
+
+
+
+class         BertForMaskedLM 
+BertForMaskedLM --|> BertPreTrainedModel 
+class         BertForNextSentencePrediction
+BertForNextSentencePrediction --|> BertPreTrainedModel
+class         BertForSequenceClassification 
+BertForSequenceClassification --|> BertPreTrainedModel
+class         BertForMultipleChoice
+BertForMultipleChoice  --|> BertPreTrainedModel
+class         BertForTokenClassification
+BertForTokenClassification --|> BertPreTrainedModel
+class         BertForQuestionAnswering
+BertForQuestionAnswering --|> BertPreTrainedModel
+
+' BertPreTrainedModel  ..> BertConfig
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+abstract        pipeline
+
+class           TextClassificationPipeline{
+    Task
+    ---
+    "sentiment-analysis"
+    "text-classification"
+
+}
+TextClassificationPipeline--|> pipeline
+
+class           "TokenClassificationPipeline"{
+    Task
+    ---
+    "token-classification"
+}
+TokenClassificationPipeline--|> pipeline
+
+class           "QuestionAnsweringPipeline"{
+    Task
+    ---
+    "question-answering"
+}
+QuestionAnsweringPipeline--|> pipeline
+
+class           "SummarizationPipeline"{
+    Task
+    ---
+    "summarization"
+}
+SummarizationPipeline--|> pipeline
+
+class           "TranslationPipeline"{
+    Task
+    ---
+    "translation"
+}
+TranslationPipeline--|> pipeline
+
+
+
+@enduml

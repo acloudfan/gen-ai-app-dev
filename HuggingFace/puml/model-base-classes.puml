@@ -1,0 +1,41 @@
+@startuml
+
+' ' abstract PreTrainedModel {
+' '     from_pretrained(...)
+' ' }
+
+' ' ' https://huggingface.co/docs/transformers/v4.36.1/en/main_classes/configuration#transformers.PretrainedConfig
+' ' abstract PreTrainedConfig{
+' '     from_pretrained(...)
+' ' }
+
+' ' https://huggingface.co/docs/transformers/v4.36.1/en/main_classes/tokenizer#transformers.PreTrainedTokenizer
+' abstract PreTrainedTokenizer{
+'     from_pretrained(...)
+' }
+
+' abstract PreTrainedTokenizerFast{
+'     from_pretrained(...)
+' }
+
+' class BertTokenizerFast {
+
+'     from_pretrained(...)
+'     call(..)
+'     tokenize(..)
+'     encode(..)
+' }
+
+class BertTokenizer {
+
+    from_pretrained(...)
+    call(..)
+    tokenize(..)
+
+    encode(..)
+    decode(..)
+}
+
+' BertTokenizer --|> PreTrainedTokenizer
+' BertTokenizerFast --|>PreTrainedTokenizerFast
+@enduml

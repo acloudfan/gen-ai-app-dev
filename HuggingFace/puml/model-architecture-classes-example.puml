@@ -1,0 +1,14 @@
+@startuml
+
+class BertModel{}
+class TFBertModel{}
+class FlaxBertModel{}
+
+
+class T5Model{}
+class TFT5Model{}
+class FlaxT5Model
+
+
+
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+
+' Scores for each label
+class SequenceClassifierOutput{
+    logits
+}
+
+' ' Prediction score for each token in the model vocabulary
+' class CausalLMOutput{
+'     logits
+' }
+
+' Classification scores for each token/label
+class TokenClassifierOutput{
+    logits
+}
+
+' Start/end index for the extractive response
+class QuestionAnsweringModelOutput{
+    start_logits
+    end_logits
+}
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+
+' https://huggingface.co/docs/huggingface_hub/package_reference/inference_client#huggingface_hub.InferenceClient
+
+class InferenceClient {
+    <task_functions(...)>
+    ---
+    get_deployed_list([task-framework])
+    get_model_status(model_id)
+
+}
+
+' https://huggingface.co/docs/huggingface_hub/v0.20.2/en/package_reference/inference_client#huggingface_hub.AsyncInferenceClient
+
+class AsyncInferenceClient{
+    <task_functions(...)>
+    ---
+    get_deployed_list([task-framework])
+    get_model_status(model_id)
+    
+}
+
+@enduml

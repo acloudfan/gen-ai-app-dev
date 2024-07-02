@@ -1,0 +1,41 @@
+@startuml
+abstract        AutoModel{
+    from_pretrained(pretrained_model_name_OR_path)
+    from_config(**kwargs)
+}
+
+' note bottom of AutoModel 
+'     This is a generic model class 
+'     that will be instantiated as one of the 
+'     base model classes of the library when 
+'     created with the from_pretrained() class 
+'     method or the from_config() class method. 
+' end note
+
+abstract        AutoTokenizer{
+    from_pretrained(pretrained_model_name_OR_path, *inputs, **kwargs)
+}
+
+' note bottom of AutoTokenizer 
+'     This is a generic tokenizer class 
+'     that will be instantiated as one of the 
+'     tokenizer classes of the library when 
+'     created with the AutoTokenizer.from_pretrained() 
+'     class method. 
+' end note
+
+abstract        AutoConfig{
+    from_pretrained(pretrained_model_name_or_path,   **kwargs)
+}
+
+' note bottom of AutoConfig 
+'     generic configuration class 
+'     that will be instantiated as one of the 
+'     configuration classes of the library when 
+'     created with the from_pretrained() 
+'     class method." 
+' end note
+
+
+
+@enduml

@@ -1,0 +1,20 @@
+' https://huggingface.co/docs/huggingface_hub/v0.20.2/en/package_reference/inference_endpoints#huggingface_hub.InferenceEndpoint
+
+@startuml
+
+class InferenceEndpoint {
+    <manage endpoint functions>
+
+    ---
+
+    client()
+
+    async_client()
+}
+
+class AsyncInferenceClient{}
+
+class InferenceClient{}
+
+
+@enduml

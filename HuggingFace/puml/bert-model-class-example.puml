@@ -1,0 +1,27 @@
+@startuml
+
+' https://huggingface.co/docs/transformers/model_doc/bert#transformers.BertModel
+
+class BertModel {}
+
+' https://huggingface.co/docs/transformers/model_doc/bert#transformers.BertConfig
+class BertConfig{}
+
+BertModel ..> BertConfig : > uses
+
+abstract PreTrainedModel {
+    from_pretrained(...)
+}
+
+' https://huggingface.co/docs/transformers/v4.36.1/en/main_classes/configuration#transformers.PretrainedConfig
+abstract PreTrainedConfig{
+    from_pretrained(...)
+}
+
+BertModel --|> PreTrainedModel
+BertConfig --|> PreTrainedConfig
+
+' class BertTokenizer{}
+' class BertTokenizerFast{}
+
+@enduml
