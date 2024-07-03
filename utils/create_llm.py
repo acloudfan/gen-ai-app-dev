@@ -7,7 +7,7 @@ from langchain_openai import OpenAI
 from langchain_community.llms.ai21 import AI21
 from langchain_anthropic import AnthropicLLM
 from langchain_community.llms import HuggingFaceEndpoint
-
+from langchain_openai import ChatOpenAI
 
 # Cohere
 ## Create the Cohere model
