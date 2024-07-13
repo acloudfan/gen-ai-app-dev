@@ -1,0 +1,43 @@
+@startuml
+
+' https://langchain-ai.github.io/langgraph/reference/graphs/
+' https://github.com/langchain-ai/langgraph
+' StateGraph is a class that represents the graph. You initialize this class by passing in a state definition. 
+' This state definition represents a central state object that is updated over time. 
+' This state is updated by nodes in the graph, which return operations to attributes of this state (in the form of a key-value store).
+class StateGraph {
+    state
+    ---
+    add_node(name: String, value: function or LCEL)
+    add_edge(node_name_1, node_name_2)
+    add_conditional_edges(source_node, path[Callable], path_map, )
+    ---
+    set_entry_point(node_name)
+    set_finish_point(node_name)
+    ---
+    compile() -> CompiledGraph
+}
+
+class CompiledGraph{
+    invoke()
+    stream()
+    ---
+    get_state_history()
+    get_graph()
+    ---
+    update_state()
+    ---
+    ...
+}
+
+' https://langchain-ai.github.io/langgraph/reference/graphs/#messagegraph
+' Each node in a MessageGraph takes a list of messages as input and returns zero or more messages as output.
+' The add_messages function is used to merge the output messages from each node into the existing list of messages 
+' in the graph's state
+class MessageGraph{
+    add_messages
+}
+
+MessageGraph --|> StateGraph
+
+@enduml

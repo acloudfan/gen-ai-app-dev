@@ -1,5 +1,8 @@
 from langchain.llms import Cohere
 
+# pip install -U langchain-cohere
+# from langchain_cohere import Cohere
+
 
 from langchain_openai import OpenAI
 

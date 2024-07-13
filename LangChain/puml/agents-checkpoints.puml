@@ -1,0 +1,27 @@
+' https://langchain-ai.github.io/langgraph/reference/checkpoints/
+
+@startuml
+
+' https://langchain-ai.github.io/langgraph/reference/checkpoints/#checkpoint
+class Chekpoint{}
+
+' https://langchain-ai.github.io/langgraph/reference/checkpoints/#basecheckpointsaver
+class BaseCheckpointSaver{}
+
+' https://langchain-ai.github.io/langgraph/reference/checkpoints/#memorysaver
+' An in-memory checkpoint saver.
+class MemorySaver{}
+MemorySaver --|> BaseCheckpointSaver
+
+' https://langchain-ai.github.io/langgraph/reference/checkpoints/#sqlitesaver
+' A checkpoint saver that stores checkpoints in a SQLite database.
+class SqliteSaver{}
+SqliteSaver --|> BaseCheckpointSaver
+
+' https://langchain-ai.github.io/langgraph/reference/checkpoints/#asyncsqlitesaver
+' An asynchronous checkpoint saver that stores checkpoints in a SQLite database.
+class AsyncSqliteSaver{}
+AsyncSqliteSaver --|> BaseCheckpointSaver
+
+
+@enduml

@@ -1,0 +1,31 @@
+' DataClasses holds the information for the agent runs. This information is used by the LLM to generate the responses for given task
+
+@startuml
+
+' This represents the final result from an agent, when it is ready to return to the user. 
+' It contains a return_values key-value mapping, which contains the final agent output. 
+' Usually, this contains an output key containing a string that is the agent's response.
+' https://api.python.langchain.com/en/latest/agents/langchain_core.agents.AgentFinish.html
+class AgentFinish{
+    return_values
+    output
+}
+
+' This is a dataclass that represents the action an agent should take. 
+' It has a tool property (which is the name of the tool that should be invoked) and a tool_input property (the input to that tool)
+' https://api.python.langchain.com/en/latest/agents/langchain_core.agents.AgentAction.html
+class AgentAction{
+    tool
+    tool_input
+}
+
+' These represent previous agent actions and corresponding outputs from this CURRENT agent run. 
+' These are important to pass to future iteration so the agent knows what work it has already done. 
+' This is typed as a List[Tuple[AgentAction, Any]]. Note that observation is currently left as type Any to be maximally flexible. 
+' In practice, this is often a string.
+' https://python.langchain.com/v0.1/docs/modules/agents/how_to/intermediate_steps/
+class IntermediateSteps{
+    List[Tuple[AgentAction, Any]]
+}
+
+@enduml
