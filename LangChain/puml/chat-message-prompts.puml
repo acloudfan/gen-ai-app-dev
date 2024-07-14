@@ -1,0 +1,22 @@
+' https://api.python.langchain.com/en/latest/core_api_reference.html#module-langchain_core.prompts
+
+@startuml
+
+class BaseChatPromptTemplate{}
+
+' https://api.python.langchain.com/en/latest/prompts/langchain_core.prompts.chat.SystemMessagePromptTemplate.html#langchain_core.prompts.chat.SystemMessagePromptTemplate
+class SystemMessagePromptTemplate{}
+SystemMessagePromptTemplate --|> BaseChatPromptTemplate
+
+' https://api.python.langchain.com/en/latest/prompts/langchain_core.prompts.chat.AIMessagePromptTemplate.html#langchain_core.prompts.chat.AIMessagePromptTemplate
+class AIMessagePromptTemplate{}
+AIMessagePromptTemplate --|> BaseChatPromptTemplate
+
+' https://api.python.langchain.com/en/latest/prompts/langchain_core.prompts.chat.HumanMessagePromptTemplate.html#langchain_core.prompts.chat.HumanMessagePromptTemplate
+class HumanMessagePromptTemplate{}
+HumanMessagePromptTemplate --|> BaseChatPromptTemplate
+
+class ChatMessagePromptTemplate{}
+ChatMessagePromptTemplate --|> BaseChatPromptTemplate
+
+@enduml

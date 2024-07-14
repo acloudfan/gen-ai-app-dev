@@ -1,0 +1,37 @@
+' Chat models
+' https://blog.langchain.dev/chat-models/
+
+@startuml
+
+' https://api.python.langchain.com/en/latest/messages/langchain_core.messages.base.BaseMessage.html#langchain_core.messages.base.BaseMessage
+class BaseMessage {
+    content
+    type
+    id
+    ...
+    ---
+    pretty_print()
+    ' Get a pretty representation of the message.
+    pretty_repr()
+}
+
+'  a message setting the objectives the AI should follow
+class SystemMessage {}
+SystemMessage --|> BaseMessage
+
+' a message sent from the perspective of the human
+class HumanMessage {}
+HumanMessage --|> BaseMessage
+
+' a message sent from the perspective of the AI the human is interacting with
+class AIMessage {}
+AIMessage --|> BaseMessage
+
+' a message allowing for arbitrary setting of role
+class ChatMessage {}
+ChatMessage --|> BaseMessage
+
+' https://api.python.langchain.com/en/latest/messages/langchain_core.messages.tool.ToolMessage.html#langchain_core.messages.tool.ToolMessage
+class ToolMessage{}
+
+@enduml
