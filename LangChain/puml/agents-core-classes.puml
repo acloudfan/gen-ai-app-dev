@@ -1,0 +1,46 @@
+' DataClasses holds the information for the agent runs. This information is used by the LLM to generate the responses for given task
+
+@startuml
+
+
+' This is a dataclass that represents the action an agent should take. 
+' It has a tool property (which is the name of the tool that should be invoked) and a tool_input property (the input to that tool)
+' https://api.python.langchain.com/en/latest/agents/langchain_core.agents.AgentAction.html
+' https://api.python.langchain.com/en/latest/agents/langchain_core.agents.AgentAction.html#langchain_core.agents.AgentAction
+struct AgentAction{
+    tool
+    tool_input
+}
+
+' This represents the final result from an agent, when it is ready to return to the user. 
+' It contains a return_values key-value mapping, which contains the final agent output. 
+' Usually, this contains an output key containing a string that is the agent's response.
+' https://api.python.langchain.com/en/latest/agents/langchain_core.agents.AgentFinish.html
+struct AgentFinish {
+    return_values
+    output
+}
+
+' These represent previous agent actions and corresponding outputs from this CURRENT agent run. 
+' These are important to pass to future iteration so the agent knows what work it has already done. 
+' This is typed as a List[Tuple[AgentAction, Any]]. Note that observation is currently left as type Any to be maximally flexible. 
+' In practice, this is often a string.
+' https://python.langchain.com/v0.1/docs/modules/agents/how_to/intermediate_steps/
+' class IntermediateSteps{
+'     List[Tuple[AgentAction, Any]]
+' }
+
+' This is the chain responsible for deciding what step to take next.
+class Agent{}
+
+Agent ..> AgentAction : proposes 1 or more actions
+Agent ..> AgentFinish : ends the loop with this action
+
+' The agent executor is the runtime for an agent. This is what actually calls the agent, 
+' executes the actions it chooses, passes the action outputs back to the agent, and repeats.
+class AgentExecutor{}
+
+AgentExecutor ..> Agent : get_actions_and_execute
+
+
+@enduml

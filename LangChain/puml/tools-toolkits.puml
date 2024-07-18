@@ -1,0 +1,33 @@
+@startuml
+
+interface BaseTool {
+    name
+    description
+    func
+    args_schema
+    return_direct
+}
+
+class  XXXTool{}
+XXXTool --|> BaseTool
+
+class   XXXAPIWrapper <<stereotype>> {
+    api_specific_attributes
+    ---
+    api_specific_functions()
+}
+
+XXXTool ..> XXXAPIWrapper : uses 
+
+' https://api.python.langchain.com/en/latest/tools/langchain_core.tools.BaseToolkit.html#langchain_core.tools.BaseToolkit
+class BaseToolkit{
+    get_tools()
+}
+
+class XXXToolkit{}
+XXXToolkit --|> BaseToolkit
+
+' https://blog.langchain.dev/structured-tools/
+' class StructuredTool{}
+
+@enduml

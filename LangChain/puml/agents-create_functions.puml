@@ -1,0 +1,12 @@
+@startuml
+
+' https://api.python.langchain.com/en/latest/langchain_api_reference.html#module-langchain.agents
+
+' https://api.python.langchain.com/en/latest/agents/langchain.agents.tool_calling_agent.base.create_tool_calling_agent.html#langchain.agents.tool_calling_agent.base.create_tool_calling_agent
+
+rectangle create_tool_calling_agent( llm, tools, prompt)
+
+' https://api.python.langchain.com/en/latest/agents/langchain.agents.openai_tools.base.create_openai_tools_agent.html
+rectangle create_openai_tools_agent( llm, tools, prompt)
+
+@enduml
