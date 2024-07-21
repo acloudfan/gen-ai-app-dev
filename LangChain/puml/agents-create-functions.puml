@@ -1,0 +1,46 @@
+@startuml
+allow_mixing
+
+' https://api.python.langchain.com/en/latest/agents/langchain.agents.agent.Agent.html
+class Runnable{}
+
+' https://api.python.langchain.com/en/latest/langchain_api_reference.html#module-langchain.agents
+
+' https://api.python.langchain.com/en/latest/agents/langchain.agents.tool_calling_agent.base.create_tool_calling_agent.html#langchain.agents.tool_calling_agent.base.create_tool_calling_agent
+
+rectangle create_tool_calling_agent
+create_tool_calling_agent ..> Runnable : creates
+
+' https://api.python.langchain.com/en/latest/agents/langchain.agents.openai_tools.base.create_openai_tools_agent.html
+' https://python.langchain.com/v0.1/docs/modules/agents/agent_types/openai_tools/
+rectangle create_openai_tools_agent
+create_openai_tools_agent ..> Runnable : creates
+
+' https://api.python.langchain.com/en/latest/agents/langchain.agents.xml.base.create_xml_agent.html
+' https://smith.langchain.com/hub/hwchase17/xml-agent-convo
+rectangle create_xml_agent
+create_xml_agent ..> Runnable : creates
+
+' https://api.python.langchain.com/en/latest/agents/langchain.agents.json_chat.base.create_json_chat_agent.html
+' https://python.langchain.com/v0.1/docs/modules/agents/agent_types/json_agent/
+' Create an agent that uses JSON to format its logic, build for Chat Models.
+rectangle create_json_agent
+create_json_agent ..> Runnable : creates
+
+' https://python.langchain.com/v0.1/docs/modules/agents/agent_types/structured_chat/
+' https://api.python.langchain.com/en/latest/agents/langchain.agents.structured_chat.base.create_structured_chat_agent.html
+' https://smith.langchain.com/hub/hwchase17/structured-chat-agent
+rectangle create_structured_chat_agent
+create_structured_chat_agent ..> Runnable : creates
+
+' https://api.python.langchain.com/en/latest/agent_toolkits/langchain_community.agent_toolkits.sql.base.create_sql_agent.html#langchain_community.agent_toolkits.sql.base.create_sql_agent
+rectangle create_sql_agent
+create_sql_agent ..> Runnable : creates
+
+' https://python.langchain.com/v0.1/docs/modules/agents/agent_types/react/
+rectangle create_react_agent
+create_react_agent ..> Runnable : creates
+
+
+
+@enduml
