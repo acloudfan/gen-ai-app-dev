@@ -8,7 +8,7 @@ interface BaseTool {
     return_direct
 }
 
-class  XXXTool{}
+class  XXXTool <<stereotype>> {}
 XXXTool --|> BaseTool
 
 class   XXXAPIWrapper <<stereotype>> {
@@ -24,10 +24,12 @@ class BaseToolkit{
     get_tools()
 }
 
-class XXXToolkit{}
+' class XXXToolkit{}
 XXXToolkit --|> BaseToolkit
 
 ' https://blog.langchain.dev/structured-tools/
 ' class StructuredTool{}
+
+XXXToolkit ..> XXXTool : uses
 
 @enduml
