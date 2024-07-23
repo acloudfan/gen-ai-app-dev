@@ -5,7 +5,6 @@ interface BaseTool {
     description
     func
     args_schema
-    return_direct
 }
 
 class  XXXTool <<stereotype>> {}
@@ -20,16 +19,20 @@ class   XXXAPIWrapper <<stereotype>> {
 XXXTool ..> XXXAPIWrapper : uses 
 
 ' https://api.python.langchain.com/en/latest/tools/langchain_core.tools.BaseToolkit.html#langchain_core.tools.BaseToolkit
-class BaseToolkit{
-    get_tools()
-}
+' class BaseToolkit{
+'     get_tools()
+' }
 
 ' class XXXToolkit{}
-XXXToolkit --|> BaseToolkit
+' XXXToolkit --|> BaseToolkit
 
 ' https://blog.langchain.dev/structured-tools/
 ' class StructuredTool{}
 
-XXXToolkit ..> XXXTool : uses
+' XXXToolkit ..> XXXTool : uses
+
+class StructuredTool {
+    from_function( f ) : Tool
+}
 
 @enduml
