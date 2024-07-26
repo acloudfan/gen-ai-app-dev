@@ -31,6 +31,7 @@ def create_gpt_chat_llm(args={}):
 # HuggingFace
 ## Create a hugging face model
 ## Default model = 
+# Models : "HuggingFaceH4/zephyr-7b-beta" , "teknium/OpenHermes-2.5-Mistral-7B"
 def create_hugging_face_chat_llm(repo_id="mistralai/Mistral-7B-Instruct-v0.2", args={}, verbose=False):
     
     llm = HuggingFaceEndpoint(
