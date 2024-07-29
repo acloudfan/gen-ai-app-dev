@@ -38,9 +38,9 @@ Agent ..> AgentFinish : ends the loop with this action
 
 ' The agent executor is the runtime for an agent. This is what actually calls the agent, 
 ' executes the actions it chooses, passes the action outputs back to the agent, and repeats.
-class AgentExecutor{}
+' class AgentExecutor{}
 
-AgentExecutor ..> Agent : get_actions_and_execute
+' AgentExecutor ..> Agent : get_actions_and_execute
 
 
 @enduml
