@@ -1,0 +1,46 @@
+# This is a template file for securely managing your Model API keys.
+# 
+# How to use:
+## 1. Create a key file under any folder of your choice e.g., 'C:\\Users\\raj\\.jupyter\\.env' is where I have created my key file
+## 2. Copy the content of this file and paste it in your key file
+## 3. Add keys to the file as you create accounts with the model providers
+##    E.g., HUGGINGFACEHUB_API_TOKEN=ABCDED141414141414
+##    E.g., OPENAI_API_KEY=1425AGSFSF%$$DDD
+
+
+# Hugging Face Token
+# https://huggingface.co/docs/hub/en/security-tokens
+HUGGINGFACEHUB_API_TOKEN=<<<<Add your Hugging Face Token Here>>>>
+
+# Open AI Key
+# https://auth.openai.com/authorize
+OPENAI_API_KEY=<<<<Add your open AI API key Here>>>>
+
+# Google Gemini
+# https://ai.google.dev/gemini-api/docs/api-key
+GOOGLE_API_KEY=<<<<Google API Key>>>>
+
+# Cohere Key
+# https://dashboard.cohere.com/welcome/register
+COHERE_API_KEY=<<<<Add your Cohere API key Here>>>>
+
+# AI21
+# https://studio.ai21.com/login
+AI21_API_KEY=<<<<Add your AI21 API key Here>>>>
+
+# Anthropic
+# https://console.anthropic.com/login
+ANTHROPIC_API_KEY=<<<<Add your Anthropic API key>>>>
+
+# Pinecone
+# https://login.pinecone.io/login
+PINECONE_API_KEY=<<<<Pinecone API Key>>>>
+PINECONE_HOST=<<<<Add the host Here>>>>
+
+# SerpAPI
+# https://serpapi.com/users/sign_up
+SERPAPI_API_KEY=<<<<Search API Key>>>>
+
+# Tavily
+# https://tavily.us.auth0.com/u/signup
+TAVILY_API_KEY=<<<<Serach API Key>>>
