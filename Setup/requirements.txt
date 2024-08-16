@@ -1,18 +1,4 @@
-#torch
-#transformers
-
-pandas 2.1.4
-numpy-1.26.4
-faiss-cpu-1.8.0 
-datasets 2.18.0
-
-transformers 4.38.2
-python-dotenv  1.0.1
-
-langchain   0.1.10
-
-cohere   4.51
-
-matplotlib 3.8.3
-
-pypdf 4.1.0
+matplotlib=3.8.4
+langchain=0.2.14
+jupyter=1.0.0
+jupyterlab=4.0.11
