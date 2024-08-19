@@ -1,4 +1,4 @@
-!bash
+#/bin/!bash
 
 echo "Getting the setup script ..."
 git clone https://github.com/acloudfan/gen-ai-app-dev.git --quiet
