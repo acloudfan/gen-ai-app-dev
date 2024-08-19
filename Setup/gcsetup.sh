@@ -1,5 +1,8 @@
 #/bin/!bash
 
+rm -rf ./gen-ai-app-dev > /dev/null
+rm ./gcsetup.sh > /dev/null
+
 echo "Getting the setup script ..."
 git clone https://github.com/acloudfan/gen-ai-app-dev.git --quiet
 
@@ -24,6 +27,6 @@ while getopts "h:l" option; do
     esac
 done
 
-rm -rf ./gen-ai-app-dev
+
 
 echo "Done"
