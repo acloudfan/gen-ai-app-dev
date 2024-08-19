@@ -16,9 +16,11 @@ while getopts "h:l" option; do
         l) 
             echo "Installing Langchain Packages ... "
             pip install --quiet -r  ./gen-ai-app-dev/Setup/langchain-requirements.txt
+            ;;
         h)
             echo "Intalling HuggingFace libraries ..."
             pip install --quiet -r  ./gen-ai-app-dev/Setup/huggingface-requirements.txt
+            ;;
 
 rm -rf gen-ai-app-dev
 
