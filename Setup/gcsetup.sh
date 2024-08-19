@@ -25,6 +25,5 @@ while getopts "h:l" option; do
 done
 
 rm -rf ./gen-ai-app-dev
-rm -rf ./gcsetup.sh
 
 echo "Done"
