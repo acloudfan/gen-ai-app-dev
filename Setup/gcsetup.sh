@@ -10,7 +10,7 @@ mv ./gen-ai-app-dev/utils ./utils
 echo "Installing common packages ..."
 pip install --quiet matplotlib==3.8.4  python-dotenv==0.21.0 
 
-while getopts "hl" option; do
+while getopts "h:l" option; do
     case $option in
         # Install langchain dependencies
         l) 
