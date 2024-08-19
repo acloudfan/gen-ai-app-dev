@@ -3,6 +3,7 @@
 # The receieved key is the added to the environment
 
 import os
+import getpass
 
 class api_key_check:
     
@@ -19,11 +20,12 @@ class api_key_check:
         
         self.api_key = os.getenv(key_name)
         
-        if not api_key:
-            self.api_key=os.getenv(key_name)
-            if not api_key:
-                # Key not found in environment variables
-                print("Key NOT found in environment.")
-                print("Provide the ",key_name," : ")
-                self.api_key=getpass.getpass()
-                os.environ[key_name] = self.api_key
+        if not self.api_key:
+            # Key not found in environment variables
+            print("Key NOT found in environment.")
+            print("Provide the ",key_name," : ")
+            self.api_key=getpass.getpass()
+            os.environ[key_name] = self.api_key
+            print("Added key: ", key_name, " to the environment.")
+        else:
+            print("Key: ", key_name, " already set in environment.")

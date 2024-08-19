@@ -1,0 +1,6 @@
+# Packages installed with pip as they are not available in conda
+langchain-google-genai>=0.7.2
+langchain-cohere>=0.2.2
+langchain-openai>=0.1.22
+langchain-anthropic>=0.1.23
+langchain-huggingface>=0.0.3

@@ -18,6 +18,8 @@ from langchain_google_genai import GoogleGenerativeAI
 
 # Cohere
 ## Create the Cohere model
+
+# https://python.langchain.com/v0.2/docs/integrations/providers/cohere/
 def create_cohere_llm(args={}):
     llm = Cohere(**args) 
     return llm
