@@ -21,6 +21,8 @@ while getopts "h:l" option; do
             echo "Intalling HuggingFace libraries ..."
             pip install --quiet -r  ./gen-ai-app-dev/Setup/huggingface-requirements.txt
             ;;
+    esac
+done
 
 rm -rf gen-ai-app-dev
 
