@@ -71,3 +71,11 @@ pip -V
 conda env export
 
 conda create --name <en name> --file <env yaml>
+
+
+###############
+# Colab setup #
+###############
+!curl -H "Accept: application/vnd.github.VERSION.raw" https://raw.githubusercontent.com/acloudfan/gen-ai-app-dev/main/Setup/gcsetup.sh  > gcsetup.sh
+!chmod u+x gcsetup.sh
+!./gcsetup.sh
