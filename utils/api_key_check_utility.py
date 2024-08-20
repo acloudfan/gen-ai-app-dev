@@ -29,3 +29,6 @@ class api_key_check:
             print("Added key: ", key_name, " to the environment.")
         else:
             print("Key: ", key_name, " already set in environment.")
+
+    def get_api_key(self):
+        return self.api_key
