@@ -28,7 +28,7 @@ def create_cohere_llm(args={}):
 # OpenAI
 ## Create the OpenAI model
 def create_gpt_llm(args={}):
-    llm = ChatOpenAI(**args) 
+    llm = OpenAI(**args) 
     return llm
 
 
