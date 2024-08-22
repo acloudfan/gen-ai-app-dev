@@ -1,0 +1,34 @@
+@startuml
+
+class LLM {
+    <<Base class>>
+
+    invoke(..)
+    ainvoke(..)
+
+    stream(..)
+    astream(..)
+
+    batch(..)
+    abatch(..)
+
+    astream_log(..)
+}
+
+' https://api.python.langchain.com/en/stable/llms/langchain_community.llms.fake.FakeListLLM.html#langchain_community.llms.fake.FakeListLLM
+class FakeListLLM{}
+FakeListLLM --|> LLM
+
+' https://api.python.langchain.com/en/latest/language_models/langchain_core.language_models.fake.FakeStreamingListLLM.html#langchain_core.language_models.fake.FakeStreamingListLLM
+class FakeStreamingListLLM{}
+FakeStreamingListLLM --|> LLM
+
+' https://api.python.langchain.com/en/latest/language_models/langchain_core.language_models.fake_chat_models.GenericFakeChatModel.html#langchain_core.language_models.fake_chat_models.GenericFakeChatModel
+class FakeChatModel{}
+FakeChatModel --|> LLM
+
+' https://api.python.langchain.com/en/latest/embeddings/langchain_core.embeddings.fake.FakeEmbeddings.html#langchain_core.embeddings.fake.FakeEmbeddings
+class FakeEmbeddings{}
+FakeEmbeddings --|> LLM
+
+@enduml

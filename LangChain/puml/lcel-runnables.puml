@@ -1,0 +1,27 @@
+@startuml
+
+' https://api.python.langchain.com/en/latest/core_api_reference.html#module-langchain_core.runnables
+
+' https://api.python.langchain.com/en/latest/runnables/langchain_core.runnables.base.Runnable.html
+interface Runnable {
+    name
+    input_schema
+    output_schema
+    config_specs
+    ---
+    invoke()
+    batch()
+    stream()
+    ---
+    ainvoke()
+    abatch()
+    astream()
+}
+
+' https://api.python.langchain.com/en/latest/runnables/langchain_core.runnables.config.RunnableConfig.html#langchain_core.runnables.config.RunnableConfig
+class RunnableConfig{}
+
+
+Runnable ..|> RunnableConfig :  uses
+
+@enduml

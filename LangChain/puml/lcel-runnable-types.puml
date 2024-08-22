@@ -1,0 +1,30 @@
+@startuml
+
+' https://api.python.langchain.com/en/latest/core_api_reference.html#module-langchain_core.runnables
+
+' https://api.python.langchain.com/en/latest/runnables/langchain_core.runnables.base.Runnable.html
+interface Runnable {}
+
+' https://api.python.langchain.com/en/latest/runnables/langchain_core.runnables.passthrough.RunnablePassthrough.html#langchain_core.runnables.passthrough.RunnablePassthrough
+class RunnablePassthrough{}
+RunnablePassthrough--|> Runnable
+
+' https://api.python.langchain.com/en/latest/runnables/langchain_core.runnables.base.RunnableLambda.html#langchain_core.runnables.base.RunnableLambda
+' Good if streaming support is not needed
+class RunnableLambda{}
+RunnableLambda --|> Runnable
+
+' https://api.python.langchain.com/en/latest/runnables/langchain_core.runnables.base.RunnableSequence.html#langchain_core.runnables.base.RunnableSequence
+class RunnableSequence {}
+RunnableSequence --|> Runnable
+
+' https://api.python.langchain.com/en/latest/runnables/langchain_core.runnables.base.RunnableParallel.html#langchain_core.runnables.base.RunnableParallel
+class RunnableParallel{}
+RunnableParallel--|> Runnable
+
+' https://api.python.langchain.com/en/latest/runnables/langchain_core.runnables.branch.RunnableBranch.html#langchain_core.runnables.branch.RunnableBranch
+' Runnable that selects which branch to run based on a condition.
+class RunnableBranch{}
+RunnableBranch--|> Runnable
+
+@enduml
