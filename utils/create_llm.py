@@ -22,8 +22,10 @@ from utils.api_key_check_utility import api_key_check
 
 # Cohere
 ## Create the Cohere model
-
+# Model name passed in args
 # https://python.langchain.com/v0.2/docs/integrations/providers/cohere/
+# https://python.langchain.com/v0.2/api_reference/cohere/llms/langchain_cohere.llms.Cohere.html
+# Models : https://docs.cohere.com/docs/models
 def create_cohere_llm(args={}, api_key_prompt=False):
 
     # Check availability in eviroment variable, if not found prompt 
