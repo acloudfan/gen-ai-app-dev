@@ -79,3 +79,22 @@ conda create --name <en name> --file <env yaml>
 !curl -H "Accept: application/vnd.github.VERSION.raw" https://raw.githubusercontent.com/acloudfan/gen-ai-app-dev/main/Setup/gcsetup.sh  > gcsetup.sh
 !chmod u+x gcsetup.sh
 !./gcsetup.sh
+
+###########################
+# Windows 10/11 WSL setup #
+###########################
+
+* MUST have the WSL2 version for Docker. 
+
+Open Windows PowrShell
+> wsl -l -v
+
+To check version start wsl
+$ uname -a
+
+* Install Docker
+
+https://docs.docker.com/desktop/wsl/
+
+
+
