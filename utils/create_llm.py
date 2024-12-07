@@ -86,10 +86,10 @@ def create_hugging_face_llm(repo_id="mistralai/Mistral-7B-Instruct-v0.2", args={
         api_key = api_key_check("HUGGINGFACEHUB_API_TOKEN")
 
     # check if args has model key
-    if "model" not in args:
-        print('adding.............')
-        print(args)
-        args['model'] = repo_id
+    # if "model" not in args:
+    #     print('adding.............')
+    #     print(args)
+    #     args['model'] = repo_id
         
     llm = HuggingFaceEndpoint(
         repo_id = repo_id,
