@@ -1,0 +1,42 @@
+@startuml
+
+' https://huggingface.co/docs/transformers/en/main_classes/trainer
+package  transformers {
+    ' https://huggingface.co/docs/transformers/v4.47.1/en/main_classes/trainer#transformers.Trainer
+    class Trainer {
+        model
+        --
+        train_dataset
+        eval_dataset
+        --
+        data_collator
+        --
+        training_arguments
+    }
+
+    ' https://huggingface.co/docs/transformers/v4.47.1/en/main_classes/trainer#transformers.TrainingArguments
+    class TrainingArguments {
+        <hyperparameters>
+        --
+        <parallelized training>
+        --
+        <logging strategy>
+        --
+        <precision>
+        --
+        <device usage>
+        --
+        <hub/save options>
+        --
+        ..
+    }
+
+    ' https://huggingface.co/docs/transformers/v4.47.1/en/main_classes/data_collator#data-collator
+    class DataCollatorMixin {
+        
+    }
+}
+
+Trainer ..> TrainingArguments : uses for config
+Trainer ..> DataCollatorMixin : used for creating batches
+@enduml

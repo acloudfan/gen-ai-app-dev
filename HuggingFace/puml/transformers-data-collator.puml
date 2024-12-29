@@ -1,0 +1,28 @@
+@startuml
+
+' https://huggingface.co/docs/transformers/en/main_classes/trainer
+package  transformers {
+    
+
+    ' https://huggingface.co/docs/transformers/v4.47.1/en/main_classes/data_collator#data-collator
+    class DataCollatorMixin {
+        
+    }
+
+    class DefaultDataCollator{}
+
+    class DataCollatorWithPadding{}
+
+    class DataCollatorForTokenClassification{}
+
+    class DataCollatorForSeq2Seq{}
+
+    class DataCollatorForLanguageModeling{}
+}
+
+DefaultDataCollator --|> DataCollatorMixin 
+DataCollatorWithPadding --|> DataCollatorMixin 
+DataCollatorForTokenClassification --|> DataCollatorMixin 
+DataCollatorForSeq2Seq --|> DataCollatorMixin 
+DataCollatorForLanguageModeling --|> DataCollatorMixin 
+@enduml
