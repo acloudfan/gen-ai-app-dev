@@ -1,7 +1,7 @@
 @startuml
 
 ' https://huggingface.co/docs/transformers/en/main_classes/trainer
-package  transformers {
+' package  transformers {
     ' https://huggingface.co/docs/transformers/v4.47.1/en/main_classes/trainer#transformers.Trainer
     class Trainer {
         model
@@ -12,6 +12,9 @@ package  transformers {
         data_collator
         --
         training_arguments
+        --
+        evaluate()
+        compute_metrics
     }
 
     ' https://huggingface.co/docs/transformers/v4.47.1/en/main_classes/trainer#transformers.TrainingArguments
@@ -35,8 +38,9 @@ package  transformers {
     class DataCollatorMixin {
         
     }
-}
+' }
 
 Trainer ..> TrainingArguments : uses for config
 Trainer ..> DataCollatorMixin : used for creating batches
+
 @enduml
