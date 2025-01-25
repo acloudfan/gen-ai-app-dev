@@ -8,6 +8,9 @@ from langchain_ollama import ChatOllama
 # https://api.python.langchain.com/en/latest/chat_models/langchain_huggingface.chat_models.huggingface.ChatHuggingFace.html
 from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 
+# https://python.langchain.com/v0.1/docs/integrations/chat/groq/
+from langchain_groq import ChatGroq
+
 
 def create_cohere_chat_llm(args={}):
     llm = ChatCohere(**args) 
@@ -51,3 +54,9 @@ def create_ollama_chat_llm(model='gemma2', args={}):
     chat_llm = ChatOllama(model=model)
     
     return chat_llm
+
+# https://python.langchain.com/v0.1/docs/integrations/chat/groq/
+def create_groq_chat_llm(model_name="mixtral-8x7b-32768", args={}):
+    llm=ChatGroq( model_name=model_name, **args)
+    return llm
+    

@@ -17,7 +17,7 @@ from langchain_anthropic import AnthropicLLM
 from langchain_huggingface import HuggingFaceEndpoint
 from langchain_openai import ChatOpenAI
 from langchain_google_genai import GoogleGenerativeAI
-from langchain_ollama import OllamaLLM
+from langchain_ollama.llms import OllamaLLM
 
 from utils.api_key_check_utility import api_key_check
 
@@ -116,6 +116,6 @@ def create_google_llm(model='gemini-1.5-flash', args={}, api_key_prompt=False):
 # https://python.langchain.com/api_reference/ollama/llms/langchain_ollama.llms.OllamaLLM.html#langchain_ollama.llms.OllamaLLM
 # Must install Ollama before proceeding
 def create_ollama_llm(model='gemma2', args={}):
-    llm = OllamaLLM(model=model)
+    llm = OllamaLLM(model=model, **args)
     
     return llm
