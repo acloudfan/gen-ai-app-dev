@@ -1,0 +1,42 @@
+[
+  {
+    "user_input": "What are Amazon's primary revenue sources?",
+    "reference": "Amazon's primary revenue sources are product sales (merchandise and content) and service sales (third-party seller fees, AWS, advertising, and subscription services like Amazon Prime)."
+  },
+  {
+    "user_input": "How much did Amazon's net sales grow in 2024?",
+    "reference": "Amazon's net sales grew by 11% in 2024, reaching $637.959 billion."
+  },
+  {
+    "user_input": "What is the operating income for 2024?",
+    "reference": "Amazon's operating income for 2024 was $68.593 billion, a significant increase from $36.852 billion in 2023."
+  },
+  {
+    "user_input": "How does Amazon manage its inventory risk?",
+    "reference": "Amazon manages inventory risk by accurately predicting demand, avoiding overstocking, and optimizing its fulfillment network. However, inventory risks remain due to seasonality, product launches, and rapid changes in consumer demand."
+  },
+  {
+    "user_input": "What is the significance of AWS to Amazon's overall business?",
+    "reference": "AWS is a critical segment, contributing $107.556 billion in net sales in 2024, a 19% increase from 2023. It provides high-margin cloud services and supports Amazon's technology infrastructure."
+  },
+  {
+    "user_input": "How does Amazon handle cybersecurity risks?",
+    "reference": "Amazon has a centralized cybersecurity team led by a chief security officer, conducts regular risk assessments, and implements controls to prevent, detect, and mitigate data loss or security incidents."
+  },
+  {
+    "user_input": "What are Amazon's major operating expenses?",
+    "reference": "Amazon's major operating expenses include cost of sales ($326.288 billion), fulfillment costs ($98.505 billion), and technology and infrastructure costs ($88.544 billion) in 2024."
+  },
+  {
+    "user_input": "How does Amazon manage its cash flow?",
+    "reference": "Amazon generated $115.877 billion in cash from operating activities in 2024. It uses cash for capital expenditures ($77.658 billion) and investments in technology infrastructure and fulfillment networks."
+  },
+  {
+    "user_input": "What are Amazon's key risks in international operations?",
+    "reference": "Amazon faces risks in international operations, including regulatory challenges, currency fluctuations, geopolitical events, and competition from local companies with established brands."
+  },
+  {
+    "user_input": "How does Amazon address competition in its markets?",
+    "reference": "Amazon competes on selection, price, and convenience. It faces intense competition from e-commerce retailers, cloud service providers, and other technology companies, which could impact its market share and profitability."
+  }
+]

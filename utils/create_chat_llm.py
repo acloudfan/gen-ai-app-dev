@@ -28,7 +28,11 @@ def create_anthropic_chat_llm(args={}):
     return llm
 
 ## Create ChatOpenAI
+## Jan 26, 20205 : Changed the default model to gpt-4o-mini
 def create_gpt_chat_llm(args={}):
+    if "model" not in args:
+        args["model"] = "gpt-4o-mini"
+        
     llm = ChatOpenAI(**args) 
     return llm
 
