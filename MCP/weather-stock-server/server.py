@@ -142,5 +142,5 @@ async def  long_running_task_simulation(count_seconds: int, ctx: Context)->str:
 
 
 ### Uncomment the following to launch the server with SSE endpoint ##
-if __name__ == "__main__":
-    mcp.run(transport='sse') #, port=8000)
+# if __name__ == "__main__":
+#     mcp.run(transport='sse') 
