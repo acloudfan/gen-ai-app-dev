@@ -1,0 +1,81 @@
+@startuml FastMCP
+
+class FastMCP {
+  .. Core Components ..
+  - _mcp_server: MCPServer
+  - _tool_manager: ToolManager
+  - _resource_manager: ResourceManager
+  - _prompt_manager: PromptManager
+  - _auth_server_provider: OAuthAuthorizationServerProvider | None
+  - _event_store: EventStore | None
+  - _custom_starlette_routes: list[Route]
+  - _session_manager: StreamableHTTPSessionManager | None
+  + settings: Settings
+  + dependencies: Any
+
+  .. Properties ..
+  + name: str {readonly}
+  + instructions: str | None {readonly}
+  + session_manager: StreamableHTTPSessionManager {readonly}
+
+  .. Server Configuration ..
+  + run(transport, mount_path=None)
+  + sse_app(mount_path=None) -> Starlette
+  + streamable_http_app() -> Starlette
+  + custom_route(path, methods, name=None, include_in_schema=True) -> Decorator
+  - _normalize_path(mount_path, endpoint) -> str
+  - _setup_handlers()
+
+  .. Transport Implementations ..
+  - run_stdio_async()
+  - run_sse_async(mount_path=None)
+  - run_streamable_http_async()
+
+  .. Tool Management ..
+  + tool(name=None, description=None, annotations=None) -> Decorator
+  + add_tool(fn, name=None, description=None, annotations=None)
+  + list_tools() -> list[MCPTool]
+  + call_tool(name, arguments) -> Sequence[Content]
+
+  .. Resource Management ..
+  + resource(uri, name=None, description=None, mime_type=None) -> Decorator
+  + add_resource(resource)
+  + list_resources() -> list[MCPResource]
+  + list_resource_templates() -> list[MCPResourceTemplate]
+  + read_resource(uri) -> Iterable[ReadResourceContents]
+
+  .. Prompt Management ..
+  + prompt(name=None, description=None) -> Decorator
+  + add_prompt(prompt)
+  + list_prompts() -> list[MCPPrompt]
+  + get_prompt(name, arguments=None) -> GetPromptResult
+
+  .. Context & Utilities ..
+  + get_context() -> Context[ServerSession, object, Request]
+  - _convert_to_content(result) -> Sequence[Content]
+}
+
+' -- Relationships --
+' FastMCP --> "uses" MCPServer
+' FastMCP --> "uses" ToolManager
+' FastMCP --> "uses" ResourceManager
+' FastMCP --> "uses" PromptManager
+' FastMCP --> "uses" OAuthAuthorizationServerProvider
+' FastMCP --> "uses" EventStore
+' FastMCP --> "uses" Route
+' FastMCP --> "uses" StreamableHTTPSessionManager
+' FastMCP --> "uses" Settings
+' FastMCP --> "uses" MCPTool
+' FastMCP --> "uses" MCPResource
+' FastMCP --> "uses" MCPPrompt
+' FastMCP --> "uses" Context
+' FastMCP --> "uses" Starlette
+
+note top of FastMCP
+  MCP Server Implementation
+  Handles protocol communication,
+  tool execution, and resource management
+  across multiple transport protocols
+end note
+
+@enduml
