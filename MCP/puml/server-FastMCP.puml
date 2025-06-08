@@ -71,11 +71,11 @@ class FastMCP {
 ' FastMCP --> "uses" Context
 ' FastMCP --> "uses" Starlette
 
-note top of FastMCP
-  MCP Server Implementation
-  Handles protocol communication,
-  tool execution, and resource management
-  across multiple transport protocols
-end note
+' note top of FastMCP
+'   MCP Server Implementation
+'   Handles protocol communication,
+'   tool execution, and resource management
+'   across multiple transport protocols
+' end note
 
 @enduml

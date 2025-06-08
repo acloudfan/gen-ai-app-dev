@@ -22,4 +22,4 @@ dependencies = [
 ]
 
 [tool.uv.workspace]
-members = ["temp/mcp/weather-stock-client"]
+members = ["temp/mcp/weather-stock-client", "temp/mcp/test-client"]

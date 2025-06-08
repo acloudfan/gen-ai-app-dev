@@ -51,18 +51,18 @@ class ClientSession {
 }
 
 ' -- Inheritance and Relationships --
-ClientSession --|> BaseSession
-ClientSession --> "uses" ClientRequest
-ClientSession --> "uses" ClientNotification
-ClientSession --> "uses" ServerRequest
-ClientSession --> "uses" ServerNotification
+' ClientSession --|> BaseSession
+' ClientSession --> "uses" ClientRequest
+' ClientSession --> "uses" ClientNotification
+' ClientSession --> "uses" ServerRequest
+' ClientSession --> "uses" ServerNotification
 
-note top of ClientSession
-  MCP Client Session Implementation
-  Handles protocol communication and
-  manages client-server interactions
-  .................. Class diagram version info .........................
-  DEFAULT_CLIENT_INFO = types.Implementation(name="mcp", version="0.1.0")
-end note
+' note top of ClientSession
+'   MCP Client Session Implementation
+'   Handles protocol communication and
+'   manages client-server interactions
+'   .................. Class diagram version info .........................
+'   DEFAULT_CLIENT_INFO = types.Implementation(name="mcp", version="0.1.0")
+' end note
 
 @enduml
