@@ -5,31 +5,31 @@ skinparam ActivityBackgroundColor #F5F5F5
 skinparam ActivityBorderColor #333
 skinparam ActivityFontColor #333
 
-title query_loop() Activity Flow
+' title query_loop() Activity Flow
 
 start
-:Initialize MCP Client;
-:Connect to Server;
-:Get Tools List;
+:Initialize MCP Client : MCPStdioClient;
+:Connect to Server : client.connect_to_server();
+:Get Tools List : client.get_tools();
 note right: Creates tools_info string
 
 repeat
-  :Get User Query;
+  :1. Get User Query;
   if (Query == "exit"?") then (yes)
     stop
   else (no)
-    :Create Tool Selection Prompt;
-    :Call LLM (Tool Selection);
+    :2. Create Tool Selection Prompt;
+    :3. Call LLM (Tool Selection);
     :Parse LLM Response;
     
-    if (Tool Available?) then (yes)
+    if (4. Tool Available?) then (yes)
       :Call Selected Tool;
     else (no)
       :Use LLM Response Directly;
     endif
     
-    :Create Response Prompt;
-    :Call LLM (Generate Final Response);
+    :5. Create Response Prompt;
+    :6. Call LLM (Generate Final Response);
     :Display Result;
   endif
 repeat while (User continues?) is (No)

@@ -1,0 +1,8 @@
+@startuml
+
+class Send {
+    node: str    
+    arg: Any
+}
+
+@enduml

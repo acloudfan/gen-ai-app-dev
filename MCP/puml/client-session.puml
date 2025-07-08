@@ -1,68 +1,45 @@
-@startuml ClientSession
-
-' https://github.com/modelcontextprotocol/python-sdk/blob/main/src/mcp/client/session.py
-' DEFAULT_CLIENT_INFO = types.Implementation(name="mcp", version="0.1.0")
+@startuml
+' skinparam monochrome true
+' skinparam shadowing false
+' skinparam class {
+'     BackgroundColor #F5F5F5
+'     BorderColor #333
+'     FontColor #333
+'     ArrowColor #333
+' }
 
 class ClientSession {
-  .. Fields ..
-  - _client_info: Implementation
-  - _sampling_callback: SamplingFnT
-  - _list_roots_callback: ListRootsFnT
-  - _logging_callback: LoggingFnT
-  - _message_handler: MessageHandlerFnT
+    .. Protocol information exchanged between client/server ..
+    + {static} SUPPORTED_PROTOCOL_VERSIONS: set[str]
 
-  .. Protocol information exchanged between client/server ..
+    .. Session Lifecycle ..
+    + {async} initialize(): InitializeResult
+    + {async} send_ping(): EmptyResult
 
-  + {static} SUPPORTED_PROTOCOL_VERSIONS: set[str]
+    .. Resource Management ..
+    + {async} list_resources(cursor: str = None): ListResourcesResult
+    + {async} list_resource_templates(cursor: str = None): ListResourceTemplatesResult
+    + {async} read_resource(uri: AnyUrl): ReadResourceResult
+    + {async} subscribe_resource(uri: AnyUrl): EmptyResult
+    + {async} unsubscribe_resource(uri: AnyUrl): EmptyResult
 
-  .. Session Lifecycle ..
+    .. Tool Operations ..
+    + {async} list_tools(cursor: str = None): ListToolsResult
+    + {async} call_tool(name, arguments, read_timeout, progress_callback): CallToolResult
 
-  + initialize(): InitializeResult {async}
-  + send_ping(): EmptyResult {async}
+    .. Prompt Management ..
+    + {async} list_prompts(cursor: str = None): ListPromptsResult
+    + {async} get_prompt(name, arguments): GetPromptResult
+    + {async} complete(ref, argument): CompleteResult
 
-  .. Resource Management ..
+    .. Notifications & Logging ..
+    + {async} send_progress_notification(progress_token, progress, total, message)
+    + {async} send_roots_list_changed()
+    + {async} set_logging_level(level: LoggingLevel): EmptyResult
 
-  + list_resources(cursor: str = None): ListResourcesResult {async}
-  + list_resource_templates(cursor: str = None): ListResourceTemplatesResult {async}
-  + read_resource(uri: AnyUrl): ReadResourceResult {async}
-  + subscribe_resource(uri: AnyUrl): EmptyResult {async}
-  + unsubscribe_resource(uri: AnyUrl): EmptyResult {async}
-
-  .. Tool Operations ..
-
-  + list_tools(cursor: str = None): ListToolsResult {async}
-  + call_tool(name, arguments, read_timeout, progress_callback): CallToolResult {async}
-
-  .. Prompt Management ..
-
-  + list_prompts(cursor: str = None): ListPromptsResult {async}
-  + get_prompt(name, arguments): GetPromptResult {async}
-  + complete(ref, argument): CompleteResult {async}
-
-  .. Notifications & Logging ..
-
-  + send_progress_notification(progress_token, progress, total, message) {async}
-  + send_roots_list_changed() {async}
-  + set_logging_level(level: LoggingLevel): EmptyResult {async}
-
-  .. Internal Handlers ..
-
-  - _received_request(responder) {async}
+    ' .. Internal Handlers ..
+    ' - {async} _received_request(responder)
 }
 
-' -- Inheritance and Relationships --
-' ClientSession --|> BaseSession
-' ClientSession --> "uses" ClientRequest
-' ClientSession --> "uses" ClientNotification
-' ClientSession --> "uses" ServerRequest
-' ClientSession --> "uses" ServerNotification
-
-' note top of ClientSession
-'   MCP Client Session Implementation
-'   Handles protocol communication and
-'   manages client-server interactions
-'   .................. Class diagram version info .........................
-'   DEFAULT_CLIENT_INFO = types.Implementation(name="mcp", version="0.1.0")
-' end note
 
 @enduml

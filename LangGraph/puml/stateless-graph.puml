@@ -1,0 +1,70 @@
+@startuml
+
+package graph{
+  class Graph {
+    + add_node()
+    + add_edge()
+    + add_conditional_edges()
+    + compile(): CompiledGraph
+  }
+
+  ' class StateGraph {
+    '   + add_node()
+    '   + add_edge()
+    '   + add_conditional_edges()
+    '   + add_sequence()
+    '   + compile(): CompiledStateGraph
+    '
+  }
+
+  class CompiledGraph {
+    + stream()
+    + astream()
+    + invoke()
+    + ainvoke()
+    + get_state()
+    + aget_state()
+    + get_state_history()
+    + aget_state_history()
+    + update_state()
+    + aupdate_state()
+    + bulk_update_state()
+    + abulk_update_state()
+    + get_graph()
+    + aget_graph()
+    + get_subgraphs()
+    + aget_subgraphs()
+    + with_config()
+  }
+
+  ' class CompiledStateGraph {
+    '   + stream()
+    '   + astream()
+    '   + invoke()
+    '   + ainvoke()
+    '   + get_state()
+    '   + aget_state()
+    '   + get_state_history()
+    '   + aget_state_history()
+    '   + update_state()
+    '   + aupdate_state()
+    '   + bulk_update_state()
+    '   + abulk_update_state()
+    '   + get_graph()
+    '   + aget_graph()
+    '   + get_subgraphs()
+    '   + aget_subgraphs()
+    '   + with_config()
+    '
+  }
+
+  ' Graph <|-- StateGraph
+  ' CompiledGraph <|-- CompiledStateGraph
+
+  Graph --> CompiledGraph : compiles to
+  ' StateGraph --> CompiledStateGraph : compiles to
+
+  ' note top of CompiledGraph : Both CompiledGraph and CompiledStateGraph\nshare similar interfaces but may have\ndifferent implementations.
+}
+
+@enduml

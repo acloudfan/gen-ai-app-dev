@@ -1,0 +1,12 @@
+@startuml
+
+class Command<N> {
+  + {static} PARENT: str
+  + graph: Optional[str] = None
+  + update: Optional[Any] = None
+  + resume: Optional[Union[dict[str, Any], Any]] = None
+  + goto: Union[Send, Sequence[Union[Send, N]], N]
+'   + ToolOutputMixin: mixin
+}
+
+@enduml

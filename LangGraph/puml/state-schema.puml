@@ -1,0 +1,57 @@
+@startuml
+
+
+class UserDefinedState {
+  key1: type
+  key2: type
+}
+
+class pydantic.BaseModel{}
+class typing.TypedDict{
+}
+
+UserDefinedState --|> TypedDict
+UserDefinedState --|>BaseModel
+
+' package graph{
+
+
+
+  ' class StateGraph {
+  '     + add_node()
+  '     + add_edge()
+  '     + add_conditional_edges()
+  '     + add_sequence()
+  '     + compile(): CompiledStateGraph
+    
+  ' }
+
+  
+
+  ' class CompiledStateGraph {
+  '     + stream()
+  '     + astream()
+  '     + invoke()
+  '     + ainvoke()
+  '     + get_state()
+  '     + aget_state()
+  '     + get_state_history()
+  '     + aget_state_history()
+  '     + update_state()
+  '     + aupdate_state()
+  '     + bulk_update_state()
+  '     + abulk_update_state()
+  '     + get_graph()
+  '     + aget_graph()
+  '     + get_subgraphs()
+  '     + aget_subgraphs()
+  '     + with_config()
+    
+  ' }
+
+  ' StateGraph --> CompiledStateGraph : compiles to
+
+  ' StateGraph --> UserDefinedState : created with
+' }
+
+@enduml

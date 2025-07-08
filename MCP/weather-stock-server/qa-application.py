@@ -19,13 +19,15 @@ import os
 from dotenv import load_dotenv
 import json
 
+from typing import List
+
 # Load the file that contains the API keys - OPENAI_API_KEY
 load_dotenv('C:\\Users\\raj\\.jupyter\\.env')
 
 
 # Invokes the LLM
 # You may switch the model to any of your choice
-def llm_client(messages:[str]):
+def llm_client(messages:List[str]):
     """
     Send a message to the LLM and return the response.
     """
@@ -49,13 +51,11 @@ def llm_client(messages:[str]):
 # Function to create a prompt from the query and tool info
 def create_prompt_for_tool_selection(query, tools_info):
     system_prompt = f"""You are an expert in answering questions using the tools provided to you.
-                        Answer the question only if you are able to use the tools provided to you.
-                        If you are unable to answer the question, respond with following format:
+                        If you are unable to answer the question with available tools, respond with following format:
                         {{
                             "tool": "NO_TOOL_AVAILABLE"
                         }}
-                        If you are able to answer the question, use the tools provided to you to answer the question.
-                        If you are able to answer the question, return the answer in the following format:
+                        If you are able to answer the question using the tools, return the answer in the following format:
                         {{
                             "tool": "tool_name",
                             "arguments": {{
@@ -72,7 +72,7 @@ def create_prompt_for_tool_selection(query, tools_info):
 
 # Function to create prompt with tool response
 def create_prompt_with_tool_response(tool_response):
-    prompt = f"""Use tool response to generate your final response in plain text. If the tool="NO_TOOL_AVAILABLE" then response should say 
+    prompt = f"""Use the tool response to generate your final response in plain text. If the tool="NO_TOOL_AVAILABLE" then response should say 
     
                 'Sorry, no tool available to process your query!!'
 
@@ -108,6 +108,7 @@ async def query_loop():
             ]
 
             # 1. Get the query from user
+            print("------------------------------------------------------------")
             query = input("Enter query: ")
             if query == "exit":
                 break
@@ -115,7 +116,8 @@ async def query_loop():
             # 2. Create the prompt for tool selection - LLM will suggest a tool to be executed
             #    Then invoke the LLM
             prompt = create_prompt_for_tool_selection(query, tools_info)
-            # Add the query as user message
+            
+            # 3. Add the query as user message
             messages.append({"role": "user", "content": prompt})
             llm_response = llm_client(messages)
             # print(f"LLM Response: {llm_response}")
@@ -124,19 +126,23 @@ async def query_loop():
             messages.append({"role": "system", "content": llm_response})
 
             
-            # 3. Call the tool
+            # 4. Call the tool if available
             tool_to_call = json.loads(llm_response)
             if tool_to_call["tool"] == "NO_TOOL_AVAILABLE":
                 result = llm_response # "No tool available to answer the question"
             else:
                 result = await client.call_tool(tool_to_call["tool"], tool_to_call["arguments"])
             
-            # 4. Call LLM to generate the final response using the tool execution result
+            # 5. Create prompt to generate the final response using the tool execution result
             prompt  = create_prompt_with_tool_response(result)
             messages.append({"role": "user", "content": prompt})
+
+            # 6. Create final response
             llm_final_response = llm_client(messages)
 
             print(f"Result: {llm_final_response}")
+
+            
 
 
     finally:
