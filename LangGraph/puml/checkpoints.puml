@@ -1,0 +1,68 @@
+@startuml StateSnapshot
+
+
+
+
+
+class Checkpoint {
+  - v: int
+  - id: str
+  - ts: str
+  - channel_values: dict[str, Any]
+'   - channel_versions: ChannelVersions
+'   - versions_seen: dict[str, ChannelVersions]
+}
+
+' note top of Checkpoint
+'   Represents a persistent checkpoint in graph execution.
+'   Contains:
+'   - Format version (v=1)
+'   - Unique monotonic ID
+'   - Creation timestamp (ISO 8601)
+'   - Current channel values
+'   - Channel version tracking
+' end note
+
+' class CheckpointMetadata {
+'     + source: Literal['input', 'loop', 'update', 'fork']
+'     + step: int
+'     + parents: dict[str, str]
+' }
+
+class StateSnapshot {
+  - config: RunnableConfig
+  - metadata: Dict[str, Any]
+  - values: Dict[str, Any]
+  - next: Tuple[str, ...]
+  - tasks: Tuple[PregelTask, ...]
+}
+
+
+class BaseCheckpointSaver {
+    ' + get(config: dict) : Checkpoint
+    ' + get_tuple(config: dict) : CheckpointTuple
+    ' + list(criteria: dict) : List[Checkpoint]
+    ' + put(checkpoint: Checkpoint, config: dict, metadata: dict) : bool
+    ' + put_writes(checkpoint: Checkpoint, writes: List[Write]) : bool
+    ' + delete_thread(thread_id: str) : bool
+    
+    ' + aget(config: dict) : Awaitable[Checkpoint]
+    ' + aget_tuple(config: dict) : Awaitable[CheckpointTuple]
+    ' + alist(criteria: dict) : Awaitable[List[Checkpoint]]
+    ' + aput(checkpoint: Checkpoint, config: dict, metadata: dict) : Awaitable[bool]
+    ' + aput_writes(checkpoint: Checkpoint, writes: List[Write]) : Awaitable[bool]
+    ' + adelete_thread(thread_id: str) : Awaitable[bool]
+    
+    ' + get_next_version(channel: str) : str
+}
+
+class InMemorySaver {}
+InMemorySaver --|> BaseCheckpointSaver
+
+class SqliteSaver  {}
+SqliteSaver  --|> BaseCheckpointSaver
+
+class PostgresSaver   {}
+PostgresSaver   --|> BaseCheckpointSaver
+
+@enduml
