@@ -1,0 +1,31 @@
+@startuml
+class MessagesState {
+  .. Fields ..
+  + messages: list[AnyMessage]
+  .. Reducers ..
+  + add_messages: reducer
+}
+
+class StateExample {
+  .. Additional Fields ..
+  + documents: list[str]
+}
+
+MessagesState <|-- StateExample
+
+note left of MessagesState
+  Prebuilt state for message handling
+  Contains:
+  - messages: list of AnyMessage objects
+  - Built-in add_messages reducer
+end note
+
+note left of StateExample
+  Typical usage pattern:
+  class State(MessagesState):
+      documents: list[str]
+  Adds custom state while inheriting
+  message handling capabilities
+end note
+
+@enduml

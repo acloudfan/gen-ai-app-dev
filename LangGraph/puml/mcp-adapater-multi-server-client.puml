@@ -1,0 +1,78 @@
+@startuml LangChain_MCP_Adapter
+
+
+package "LangChain MCP Adapter" {
+
+' https://langchain-ai.github.io/langgraph/reference/mcp/#langchain_mcp_adapters.client.MultiServerMCPClient
+class MultiServerMCPClient {
+    + __init__(server_connections)
+    + session(server_name: str) : Session
+    + get_tools() : List[Tool]
+    + get_prompt(server_name: str, prompt_id: str) : Prompt
+    + get_resources(server_name: str, resource_type: str) : List[Resource]
+}
+MultiServerMCPClient --> client_session
+
+' note top of MultiServerMCPClient
+'     Client for connecting to multiple MCP servers and loading
+'     LangChain-compatible tools, prompts and resources from them.
+' end note
+
+'   note top: "Adapter for converting MCP objects to LangChain compatible types"
+
+  () "load_mcp_tools()" as load_tools
+'   note right of load_tools
+'     Loads all available MCP tools
+'     and converts to LangChain BaseTool
+'     ---
+'     Parameters:
+'     - session: ClientSession | None
+'     - connection: Connection | None
+'     ---
+'     Returns: list[BaseTool]
+'     Raises: ValueError
+'   end note
+
+  () "load_mcp_prompt()" as load_prompt
+'   note left of load_prompt
+'     Converts MCP prompts to
+'     LangChain messages
+'     ---
+'     Parameters:
+'     - session: ClientSession
+'     - name: str
+'     - arguments: dict[str, Any] | None
+'     ---
+'     Returns: list[HumanMessage | AIMessage]
+'   end note
+
+  () "load_mcp_resources()" as load_resources
+'   note right of load_resources
+'     Converts MCP resources to
+'     LangChain Blobs
+'     ---
+'     Parameters:
+'     - session: ClientSession
+'     - uris: str | list[str] | None
+'     ---
+'     Returns: list[Blob]
+'     Raises: RuntimeError
+'   end note
+
+  interface "ClientSession" as client_session {
+    + initialize()
+    .. Other functions ..
+  }
+
+  load_tools --> client_session
+  load_prompt --> client_session
+  load_resources --> client_session
+
+  
+}
+
+
+
+
+
+@enduml

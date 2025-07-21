@@ -1,0 +1,34 @@
+@startuml
+class RunnableCallable {
+  invoke(dict)
+}
+
+' https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.ToolNode
+class ToolNode {
+  + tools: Sequence[Union[BaseTool, Callable]]
+  + name: str = "tools"
+  + tags: Optional[list[str]] = None
+  + handle_tool_errors: Union[bool, str, Callable[..., str], tuple[type[Exception], ...]] = True
+  + messages_key: str = "messages"
+}
+
+RunnableCallable <|-- ToolNode
+
+class ToolMessage {
+  + tool_call_id: str
+  + content: str
+}
+
+' note top of ToolNode
+'   A node that runs the tools called in the last AIMessage.
+  
+'   Can be used in StateGraph with a "messages" state key (or custom key).
+'   Multiple tool calls run in parallel.
+'   Output is a list of ToolMessages (one per tool call).
+  
+'   Tool calls can also be passed directly as list of ToolCall dicts.
+' end note
+
+ToolNode..> ToolMessage : invoke returns
+
+@enduml

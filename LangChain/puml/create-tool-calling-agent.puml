@@ -1,0 +1,40 @@
+@startuml create_tool_calling_agent
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+
+rectangle "create_tool_calling_agent()" as create_agent {
+    rectangle "Parameters" as params {
+        rectangle "llm: BaseLanguageModel" as llm
+        rectangle "tools: Sequence<BaseTool>" as tools
+        rectangle "prompt: ChatPromptTemplate" as prompt
+        rectangle "message_formatter: Callable" as formatter
+    }
+
+    rectangle "Returns" as returns {
+        rectangle "Runnable[AgentAction|AgentFinish]" as runnable
+    }
+}
+
+note right of params
+    Expected prompt variables:
+    - agent_scratchpad
+    - input
+    - chat_history
+    - etc.
+end note
+
+' interface "BaseLanguageModel" as llm_interface
+' interface "BaseTool" as tool_interface
+' interface "ChatPromptTemplate" as prompt_interface
+' interface "Runnable" as runnable_interface
+
+' llm ..> llm_interface
+' tools ..> tool_interface
+' prompt ..> prompt_interface
+' runnable ..> runnable_interface
+
+' formatter ..> "tuple[AgentAction, str]"
+' formatter ..> "BaseMessage"
+
+@enduml

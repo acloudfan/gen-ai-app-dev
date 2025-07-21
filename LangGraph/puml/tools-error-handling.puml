@@ -1,0 +1,36 @@
+@startuml
+start
+
+:Tool execution error occurs;
+if (handle_tool_errors type?) then (== True)
+  :Catch all exceptions;
+  :Create ToolMessage with\ndefault error template;
+  :Return error message;
+elseif (is instance of str) then (String)
+  :Catch all exceptions;
+  :Create ToolMessage with\nprovided string;
+  :Return custom message;
+elseif (is tuple of Exception types) then (Exception tuple)
+  :Check if error matches\ntuple exceptions;
+  if (Match?) then (yes)
+    :Create ToolMessage with\ndefault error template;
+    :Return error message;
+  else (no)
+    :Propagate exception;
+  endif
+elseif (is Callable) then (Callable function)
+  :Check if error matches\ncallable signature;
+  if (Match?) then (yes)
+    :Execute callable;
+    :Create ToolMessage with\ncallable result;
+    :Return custom message;
+  else (no)
+    :Propagate exception;
+  endif
+else (== False)
+  :Do not intercept exception;
+  :Propagate error unchanged;
+endif
+
+stop
+@enduml

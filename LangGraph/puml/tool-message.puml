@@ -1,0 +1,23 @@
+@startuml
+
+class ToolMessage {
+  .. Core Fields ..
+  + content: str | list[str | dict] <<required>>
+  + tool_call_id: str <<required>>
+  + type: Literal['tool'] = 'tool'
+  + status: Literal['success', 'error'] = 'success'
+  + artifact: Any = None
+  .. Inherited Fields ..
+  + additional_kwargs: dict = {}
+  + id: str | None = None
+  + name: str | None = None
+  + response_metadata: dict = {}
+  .. Constraints ..
+  + coerce_numbers_to_str = True
+  .. Methods ..
+  + pretty_print() → None
+  + pretty_repr(html: bool = False) → str
+  + text() → str
+}
+
+@enduml

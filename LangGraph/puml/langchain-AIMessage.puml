@@ -1,0 +1,66 @@
+@startuml
+' class BaseMessage {
+'   <<abstract>>
+' }
+
+class AIMessage {
+  .. Fields ..
+  + additional_kwargs: dict [Optional]
+  + content: str | list[str | dict] <<required>>
+  + example: bool = False
+  + id: str | None = None
+  + invalid_tool_calls: list[InvalidToolCall] = []
+  + name: str | None = None
+  + response_metadata: dict [Optional]
+  + tool_calls: list[ToolCall] = []
+  + type: Literal['ai'] = 'ai'
+  + usage_metadata: UsageMetadata | None = None
+  .. Constraints ..
+  + coerce_numbers_to_str = True
+  .. Methods ..
+  + pretty_print() → None
+  + pretty_repr(html: bool = False) → str
+  + text() → str
+}
+
+' BaseMessage <|-- AIMessage
+
+' note top of AIMessage
+'   Message from an AI (chat model response)
+'   Contains both raw output and standardized fields:
+'   - Tool calls
+'   - Usage metadata
+'   - Response metadata
+' end note
+
+' class InvalidToolCall {
+'   <<dataclass>>
+' }
+
+' https://python.langchain.com/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html
+class ToolCall {
+    .. Fields ..
+  + name: str
+  + args: dict[str, Any]
+  + id: str | None
+  + type: NotRequired[Literal['tool_call']]
+}
+
+note right
+    Example:
+    {
+        "name": "multiply",
+        "args": {"number_1": 1, "number_2": 5},
+        "id": "123"
+    }
+end note
+
+' class UsageMetadata {
+'   <<dataclass>>
+' }
+
+' AIMessage "1" *-- "0..*" InvalidToolCall
+AIMessage "1" *-- "0..*" ToolCall
+' AIMessage "1" *-- "0..1" UsageMetadata
+
+@enduml

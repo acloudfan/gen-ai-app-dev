@@ -1,0 +1,22 @@
+@startuml
+start
+
+:Create tools_by_name mapping;
+:Get tool_calls from last message;
+
+repeat
+  :For each tool_call;
+  
+  :tool = tools_by_name[tool_call.name];
+  :observation = tool.invoke(tool_call.args);
+  :result.append(ToolMessage(
+    content=observation,
+    tool_call_id=tool_call.id
+  ));
+repeat while (More tool_calls?) is (yes)
+->no;
+
+:Return {"messages": result};
+
+stop
+@enduml

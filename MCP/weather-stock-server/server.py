@@ -19,7 +19,7 @@ mcp = FastMCP()
 
 # Create an MCP tool for getting the stock price
 @mcp.tool()
-def  company_stock_price(stock_symbol: str) -> float:
+def  company_stock_price(stock_symbol: str) -> dict:
     """
     Retrieve the current stock price for a given company stock symbol.
 
@@ -50,7 +50,7 @@ def  company_stock_price(stock_symbol: str) -> float:
 
 # Create an MCP tool for getting the city weather
 @mcp.tool()
-def city_weather(city: str) -> int:
+def city_weather(city: str) -> dict:
     """
     Retrieve the current weather information for a given city.
 
@@ -141,6 +141,6 @@ async def  long_running_task_simulation(count_seconds: int, ctx: Context)->str:
 
 
 
-### Uncomment the following to launch the server with SSE endpoint ##
-# if __name__ == "__main__":
-#     mcp.run(transport='sse') 
+### Set transport=sse in the following code to launch the server with SSE endpoint ##
+if __name__ == "__main__":
+    mcp.run(transport='stdio') 
