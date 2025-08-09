@@ -1,0 +1,45 @@
+@startuml
+
+
+class StateGraph {
+    ' + ...
+    + compile( name: str | None = None,  checkpointer: Checkpointer = None, interrupt_before: All | list[str] | None = None,  interrupt_after: All | list[str] | None = None, debug: bool = False)
+    + invoke(input: InputT | Command | None, config: RunnableConfig | None = None)
+    
+}
+
+
+class Command{
+    + graph: str | None
+    + update: Any | None
+    + resume: dict[str, Any] | Any | None
+    + goto: Send | Sequence[Send | N] | N
+}
+StateGraph --> Command : used in invoke
+' note top of Command
+'     Bases: Generic[N], ToolOutputMixin
+'     Added in version 0.2.24.
+'     Commands to update graph state and send messages to nodes.
+' end note
+
+' note top of StateGraph
+'     Methods for compiling and managing state graphs
+'     with interrupt capabilities and checkpointing.
+' end note
+
+() "interrupt(value: Any) -> Any" as interrupt_func
+' note right of interrupt_func
+'     Interrupt the graph with a resumable exception from within a node.
+'     Parameters:
+'     - value: Any (required) The value to surface to client
+'     Returns:
+'     - Any: On subsequent invocations returns the first value
+'     Raises:
+'     - GraphInterrupt: On first invocation halts execution
+' end note
+
+
+StateGraph ..> interrupt_func : related
+
+
+@enduml

@@ -1,0 +1,140 @@
+' https://langchain-ai.github.io/langgraph/reference/store/#langgraph.store.postgres.PostgresStore.setup
+
+@startuml StorageSystem
+
+' package "Storage" {
+  interface BaseStore {
+    +batch(ops: Iterable[Op]): list[Result]
+    +abatch(ops: Iterable[Op]): list[Result]
+    +get(namespace, key, refresh_ttl): Item | None
+    +search(namespace_prefix, query, filter, limit, offset, refresh_ttl): list[SearchItem]
+    +put(namespace, key, value, index, ttl): None
+    +delete(namespace, key): None
+    +list_namespaces(prefix, suffix, max_depth, limit, offset): list[tuple[str, ...]]
+    +aget(...): Item | None
+    +asearch(...): list[SearchItem]
+    +aput(...): None
+    +adelete(...): None
+    +alist_namespaces(...): list[tuple[str, ...]]
+  }
+
+'   class Item {
+'     +value: dict[str, Any]
+'     +key: str
+'     +namespace: tuple[str, ...]
+'     +created_at: datetime
+'     +updated_at: datetime
+'   }
+
+'   class SearchItem {
+'     +score: float | None
+'     -- extends --
+'   }
+'   Item <|-- SearchItem
+
+'   class GetOp {
+'     +namespace: tuple[str, ...]
+'     +key: str
+'     +refresh_ttl: bool = True
+'   }
+
+'   class SearchOp {
+'     +namespace_prefix: tuple[str, ...]
+'     +filter: dict[str, Any] | None
+'     +limit: int = 10
+'     +offset: int = 0
+'     +query: str | None
+'     +refresh_ttl: bool = True
+'   }
+
+'   class PutOp {
+'     +namespace: tuple[str, ...]
+'     +key: str
+'     +value: dict[str, Any] | None
+'     +index: Literal[False] | list[str] | None
+'     +ttl: float | None
+'   }
+
+'   class ListNamespacesOp {
+'     +match_conditions: tuple[MatchCondition, ...] | None
+'     +max_depth: int | None
+'     +limit: int = 100
+'     +offset: int = 0
+'   }
+
+'   class MatchCondition {
+'     +match_type: NamespaceMatchType
+'     +path: NamespacePath
+'   }
+
+'   class TTLConfig {
+'     +refresh_on_read: bool
+'     +default_ttl: float | None
+'     +sweep_interval_minutes: int | None
+'   }
+
+'   class IndexConfig {
+'     +dims: int
+'     +embed: Embeddings | EmbeddingsFunc | AEmbeddingsFunc | str
+'     +fields: list[str] | None
+'   }
+
+'   class InvalidNamespaceError {
+'     -- extends --
+'   }
+'   ValueError <|-- InvalidNamespaceError
+
+'   BaseStore "1" *-- "0..*" Item
+'   BaseStore "1" *-- "0..*" GetOp
+'   BaseStore "1" *-- "0..*" SearchOp
+'   BaseStore "1" *-- "0..*" PutOp
+'   BaseStore "1" *-- "0..*" ListNamespacesOp
+'   BaseStore "1" *-- "0..1" TTLConfig
+'   BaseStore "1" *-- "0..1" IndexConfig
+'   ListNamespacesOp "1" *-- "0..*" MatchCondition
+
+'   package "Modules" {
+'     [batch] <<Module>>
+'     [embed] <<Module>>
+'   }
+
+'   package "Postgres Implementation" {
+    class PostgresStore {
+      +from_conn_string()
+      +setup()
+      +sweep_ttl(): int
+      +start_ttl_sweeper(): Future[None]
+      +stop_ttl_sweeper(): bool
+    }
+
+    ' class AsyncPostgresStore {
+    '   +from_conn_string()
+    '   +setup()
+    '   +sweep_ttl(): int
+    '   +start_ttl_sweeper(): Task[None]
+    '   +stop_ttl_sweeper(): bool
+    ' }
+
+    PostgresStore --|> BaseStore
+    ' AsyncPostgresStore --|> BaseStore
+'   }
+
+'   package "Embeddings" {
+'     interface Embeddings {
+'       +embed_documents(texts: list[str]): list[list[float]]
+'       +embed_query(text: str): list[float]
+'       +aembed_documents(texts: list[str]): list[list[float]]
+'       +aembed_query(text: str): list[float]
+'     }
+'   }
+
+'   BaseStore ..> Embeddings
+' }
+
+
+class InMemoryStore {
+
+}
+InMemoryStore --|> BaseStore
+
+@enduml

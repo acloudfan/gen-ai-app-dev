@@ -1,0 +1,76 @@
+@startuml LangGraph_MCP_Integration
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+
+package "Main Script" {
+  [main()] as main
+  [create_graph()] as create_graph
+  [create_mcp_client()] as create_client
+  [create_tool_node()] as create_tool_node
+}
+
+package "LangGraph Components" {
+  [StateGraph] as state_graph
+  [ToolNode] as tool_node
+  [MessagesState] as messages_state
+}
+
+package "MCP Client" {
+  [MultiServerMCPClient] as mcp_client
+  [mcp-server-weather.py] as weather_server
+  [mcp-server-stock.py] as stock_server
+}
+
+package "Execution Flow" {
+  [AIMessage] as ai_message
+  [Workflow Execution] as workflow_exec
+  [Tool Responses] as tool_responses
+}
+
+' Relationships
+main --> create_graph
+create_graph --> create_client
+create_graph --> create_tool_node
+create_client --> mcp_client
+mcp_client --> weather_server
+mcp_client --> stock_server
+create_tool_node --> tool_node
+create_graph --> state_graph
+state_graph --> messages_state
+
+' Graph construction flow
+state_graph --> tool_node
+tool_node --> START
+tool_node --> END
+
+' Execution flow
+main --> ai_message
+ai_message --> workflow_exec
+workflow_exec --> tool_responses
+
+' note right of mcp_client
+'   Configures two MCP servers:
+'   - weather service
+'   - stock service
+'   Both run via stdio transport
+' end note
+
+' note right of create_tool_node
+'   Creates ToolNode with:
+'   - All tools from MCP client
+'   - Error handling enabled
+' end note
+
+' note right of state_graph
+'   Simple workflow:
+'   START → tool_node → END
+' end note
+
+' note right of workflow_exec
+'   Processes AIMessage with:
+'   - weather tool call (Paris)
+'   - stock tool call (AMZN)
+' end note
+
+@enduml
