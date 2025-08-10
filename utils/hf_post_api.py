@@ -6,6 +6,9 @@
 #  - String input & output
 #  - Task specific
 # Checkout list of models by opening the link in browser : https://router.huggingface.co/v1/models
+#
+# AUG 10th, 2025
+# HF NO MORE SUPPORT DIRECT HTTP ENDPOINT Invocation - Replacing with InferenceClient()
 
 import requests
 import getpass
