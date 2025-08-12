@@ -14,12 +14,17 @@ from langchain_openai import OpenAI
 from langchain_community.llms.ai21 import AI21
 from langchain_anthropic import AnthropicLLM
 # from langchain_community.llms import HuggingFaceEndpoint
-from langchain_huggingface import HuggingFaceEndpoint
+
+# from langchain_huggingface import HuggingFaceEndpoint
+from langchain_huggingface.llms import HuggingFaceEndpoint
+
 from langchain_openai import ChatOpenAI
 from langchain_google_genai import GoogleGenerativeAI
 from langchain_ollama.llms import OllamaLLM
 
 from utils.api_key_check_utility import api_key_check
+
+
 
 # Cohere
 ## Create the Cohere model
@@ -79,8 +84,9 @@ def create_anthropic_llm(args={}, api_key_prompt=False):
 ## Create a hugging face model
 ## https://python.langchain.com/v0.2/api_reference/huggingface/llms/langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint.html
 ## Default model = 
+
 def create_hugging_face_llm(repo_id="mistralai/Mistral-7B-Instruct-v0.2", args={}, api_key_prompt=False):
-    
+# def create_hugging_face_llm(repo_id="openai/gpt-oss-120b", args={}, api_key_prompt=False):    
     # Check availability in eviroment variable, if not found prompt 
     if api_key_prompt:
         api_key = api_key_check("HUGGINGFACEHUB_API_TOKEN")
@@ -93,10 +99,13 @@ def create_hugging_face_llm(repo_id="mistralai/Mistral-7B-Instruct-v0.2", args={
         
     llm = HuggingFaceEndpoint(
         repo_id = repo_id,
+        # provider= "hf-inference",
         **args
     )
     
     return llm
+
+
 
 # Google AI API
 # https://api.python.langchain.com/en/latest/llms/langchain_google_genai.llms.GoogleGenerativeAI.html
