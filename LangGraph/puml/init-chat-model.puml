@@ -1,0 +1,60 @@
+@startuml
+
+() init_chat_model as init_chat_model
+note right of init_chat_model
+====
+**Parameters**
++ model: str
++ model_provider: str | None
++ configurable_fields: Literal[None] | Literal['any'] | list[str] | tuple[str, ...]
++ config_prefix: str | None
++ temperature: float
++ max_tokens: int
++ timeout: int
++ max_retries: int
++ base_url: str
++ rate_limiter: BaseRateLimiter
++ kwargs: Any
+
+====
+**Returns:**
+BaseChatModel
+end note
+
+
+
+class BaseChatModel {
+  + invoke
+  + Stream
+  +...
+}
+
+init_chat_model --> BaseChatModel : creates
+
+class "Model Providers" {
+  + openai
+  + anthropic
+  + azure_openai
+  + azure_ai
+  + google_vertexai
+  + google_genai
+  + bedrock
+  + bedrock_converse
+  + cohere
+  + fireworks
+  + together
+  + mistralai
+  + huggingface
+  + groq
+  + ollama
+  + google_anthropic_vertex
+  + deepseek
+  + ibm
+  + nvidia
+  + xai
+  + perplexity
+}
+
+init_chat_model ..> "Model Providers" : uses
+
+@enduml

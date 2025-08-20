@@ -1,0 +1,36 @@
+@startuml
+
+package langgraph-prebuilt {
+
+  () create_react_agent as tool_caller
+  note top of tool_caller
+  **create_react_agent()**
+  ====
+  **Parameters:**
+  - model: Union[str, LanguageModelLike, Callable[...]]
+  - tools: Union[Sequence[Union[BaseTool, Callable, dict]], ToolNode]
+  - prompt: Optional[Prompt]
+  - response_format: Optional[Union[StructuredResponseSchema, tuple]]
+  - pre_model_hook: Optional[RunnableLike]
+  - post_model_hook: Optional[RunnableLike]
+  - state_schema: Optional[StateSchemaType]
+  - context_schema: Optional[Type[Any]]
+  - checkpointer: Optional[Checkpointer]
+  - store: Optional[BaseStore]
+  - interrupt_before: Optional[list[str]]
+  - interrupt_after: Optional[list[str]]
+  - debug: bool
+  - version: Literal['v1', 'v2']
+  - name: Optional[str]
+  ====
+  **Returns:**
+  - CompiledStateGraph
+  end note
+
+  class CompiledStateGraph {
+  }
+
+  tool_caller --> CompiledStateGraph : creates
+}
+
+@enduml

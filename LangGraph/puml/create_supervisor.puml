@@ -1,0 +1,37 @@
+@startuml create_supervisor_diagram
+
+package create_supervisor {
+
+  () create_supervisor as supervisor_creator
+  note top of supervisor_creator
+  **create_supervisor()**
+  ====
+  **Parameters:**
+  - agents: list[Pregel] <<required>>
+  - model: LanguageModelLike <<required>>
+  - tools: (list[BaseTool | Callable] | ToolNode | None) = None
+  - prompt: Prompt | None = None
+  - response_format: Optional[Union[StructuredResponseSchema, tuple[str, StructuredResponseSchema]]] = None
+  - pre_model_hook: Optional[RunnableLike] = None
+  - post_model_hook: Optional[RunnableLike] = None
+  - parallel_tool_calls: bool = False
+  - state_schema: StateSchemaType | None = None
+  - config_schema: Type[Any] | None = None
+  - output_mode: OutputMode = "last_message"
+  - add_handoff_messages: bool = True
+  - handoff_tool_prefix: Optional[str] = None
+  - add_handoff_back_messages: Optional[bool] = None
+  - supervisor_name: str = "supervisor"
+  - include_agent_name: AgentNameMode | None = None
+  ====
+  **Returns:**
+  - StateGraph
+  end note
+
+  class StateGraph {
+  }
+
+  supervisor_creator --> StateGraph : creates
+}
+
+@enduml

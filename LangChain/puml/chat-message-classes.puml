@@ -27,11 +27,14 @@ HumanMessage --|> BaseMessage
 class AIMessage {}
 AIMessage --|> BaseMessage
 
+' https://api.python.langchain.com/en/latest/messages/langchain_core.messages.tool.ToolMessage.html#langchain_core.messages.tool.ToolMessage
+class ToolMessage{}
+ToolMessage --|> BaseMessage
+
 ' a message allowing for arbitrary setting of role
 class ChatMessage {}
 ChatMessage --|> BaseMessage
 
-' https://api.python.langchain.com/en/latest/messages/langchain_core.messages.tool.ToolMessage.html#langchain_core.messages.tool.ToolMessage
-class ToolMessage{}
+
 
 @enduml

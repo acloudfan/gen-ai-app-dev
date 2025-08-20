@@ -1,22 +1,46 @@
-' https://api.python.langchain.com/en/latest/core_api_reference.html#module-langchain_core.prompts
-
 @startuml
 
-class BaseChatPromptTemplate{}
+package langchain_core.prompts{
+    class ChatPromptTemplate {
+        + input_types: Dict[str, Any] [Optional]
+        + input_variables: List[str] [Required]
+        + messages: List[MessageLike] [Required]
+        + metadata: Optional[Dict[str, Any]] = None
+        + optional_variables: List[str] = []
+        + output_parser: Optional[BaseOutputParser] = None
+        + partial_variables: Mapping[str, Any] [Optional]
+        + tags: Optional[List[str]] = None
+        + validate_template: bool = False
 
-' https://api.python.langchain.com/en/latest/prompts/langchain_core.prompts.chat.SystemMessagePromptTemplate.html#langchain_core.prompts.chat.SystemMessagePromptTemplate
-class SystemMessagePromptTemplate{}
-SystemMessagePromptTemplate --|> BaseChatPromptTemplate
-
-' https://api.python.langchain.com/en/latest/prompts/langchain_core.prompts.chat.AIMessagePromptTemplate.html#langchain_core.prompts.chat.AIMessagePromptTemplate
-class AIMessagePromptTemplate{}
-AIMessagePromptTemplate --|> BaseChatPromptTemplate
-
-' https://api.python.langchain.com/en/latest/prompts/langchain_core.prompts.chat.HumanMessagePromptTemplate.html#langchain_core.prompts.chat.HumanMessagePromptTemplate
-class HumanMessagePromptTemplate{}
-HumanMessagePromptTemplate --|> BaseChatPromptTemplate
-
-class ChatMessagePromptTemplate{}
-ChatMessagePromptTemplate --|> BaseChatPromptTemplate
+        '   + append(message: Union[BaseMessagePromptTemplate, BaseMessage, BaseChatPromptTemplate, Tuple[Union[str, Type], Union[str, List[dict], List[object]]], str]) → None
+        '   + extend(messages: Sequence[Union[BaseMessagePromptTemplate, BaseMessage, BaseChatPromptTemplate, Tuple[Union[str, Type], Union[str, List[dict], List[object]]], str]]) → None
+        + format(**kwargs: Any) → str
+        + format_messages(**kwargs: Any) → List[BaseMessage]
+        + format_prompt(**kwargs: Any) → PromptValue
+        + partial(**kwargs: Any) → ChatPromptTemplate
+        + pretty_print() → None
+        + pretty_repr(html: bool = False) → str
+        '   + save(file_path: Union[Path, str]) → None
+        '   + abatch(inputs: List[Input], config: Optional[Union[RunnableConfig, List[RunnableConfig]]] = None, *, return_exceptions: bool = False, **kwargs: Optional[Any]) → List[Output]
+        '   + abatch_as_completed(inputs: Sequence[Input], config: Optional[Union[RunnableConfig, Sequence[RunnableConfig]]] = None, *, return_exceptions: bool = False, **kwargs: Optional[Any]) → AsyncIterator[Tuple[int, Union[Output, Exception]]]
+        '   + aformat(**kwargs: Any) → str
+        '   + aformat_messages(**kwargs: Any) → List[BaseMessage]
+        '   + aformat_prompt(**kwargs: Any) → PromptValue
+        '   + ainvoke(input: Dict, config: Optional[RunnableConfig] = None, **kwargs: Any) → PromptValue
+        '   + astream(input: Input, config: Optional[RunnableConfig] = None, **kwargs: Optional[Any]) → AsyncIterator[Output]
+        '   + astream_events(input: Any, config: Optional[RunnableConfig] = None, *, version: Literal['v1', 'v2'], include_names: Optional[Sequence[str]] = None, include_types: Optional[Sequence[str]] = None, include_tags: Optional[Sequence[str]] = None, exclude_names: Optional[Sequence[str]] = None, exclude_types: Optional[Sequence[str]] = None, exclude_tags: Optional[Sequence[str]] = None, **kwargs: Any) → AsyncIterator[Union[StandardStreamEvent, CustomStreamEvent]]
+        '   + batch(inputs: List[Input], config: Optional[Union[RunnableConfig, List[RunnableConfig]]] = None, *, return_exceptions: bool = False, **kwargs: Optional[Any]) → List[Output]
+        '   + batch_as_completed(inputs: Sequence[Input], config: Optional[Union[RunnableConfig, Sequence[RunnableConfig]]] = None, *, return_exceptions: bool = False, **kwargs: Optional[Any]) → Iterator[Tuple[int, Union[Output, Exception]]]
+        '   + configurable_alternatives(which: ConfigurableField, *, default_key: str = 'default', prefix_keys: bool = False, **kwargs: Union[Runnable[Input, Output], Callable[[], Runnable[Input, Output]]]) → RunnableSerializable[Input, Output]
+        '   + configurable_fields(**kwargs: Union[ConfigurableField, ConfigurableFieldSingleOption, ConfigurableFieldMultiOption]) → RunnableSerializable[Input, Output]
+        '   + invoke(input: Dict, config: Optional[RunnableConfig] = None) → PromptValue
+        '   + stream(input: Input, config: Optional[RunnableConfig] = None, **kwargs: Optional[Any]) → Iterator[Output]
+        + to_json() → Union[SerializedConstructor, SerializedNotImplemented]
+        + {static} from_messages(messages: Sequence) → ChatPromptTemplate
+        '   + {static} from_role_strings(string_messages: List[Tuple[str, str]]) → ChatPromptTemplate
+        '   + {static} from_strings(string_messages: List[Tuple[Type[BaseMessagePromptTemplate], str]]) → ChatPromptTemplate
+        '   + {static} from_template(template: str, **kwargs: Any) → ChatPromptTemplate
+    }
+}
 
 @enduml
