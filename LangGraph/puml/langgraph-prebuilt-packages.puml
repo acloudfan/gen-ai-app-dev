@@ -1,0 +1,67 @@
+@startuml LangGraph Ecosystem Packages
+
+skinparam package {
+    BackgroundColor LightBlue
+    BorderColor DarkBlue
+    FontStyle bold
+}
+
+skinparam folder {
+    BackgroundColor White
+    BorderColor Black
+}
+
+title LangGraph Ecosystem and Related Packages
+
+folder "Core LangGraph Framework" {
+  package "langgraph-prebuilt" as prebuilt {
+    [Prebuilt Agent Components]
+  }
+  note right of prebuilt
+    pip install -U langgraph langchain
+  end note
+}
+
+package "langgraph-supervisor" as supervisor {
+  [Supervisor Agent Tools]
+}
+note bottom of supervisor
+  pip install -U langgraph-supervisor
+end note
+
+package "langgraph-swarm" as swarm {
+  [Multi-Agent Swarm Tools]
+}
+note bottom of swarm
+  pip install -U langgraph-swarm
+end note
+
+package "langchain-mcp-adapters" as mcp {
+  [MCP Server Integration]
+}
+note bottom of mcp
+  pip install -U langchain-mcp-adapters
+end note
+
+package "langmem" as mem {
+  [Agent Memory Management]
+}
+note bottom of mem
+  pip install -U langmem
+end note
+
+package "agentevals" as evals {
+  [Agent Evaluation Utilities]
+}
+note bottom of evals
+  pip install -U agentevals
+end note
+
+' Define relationships (these packages extend/are related to the core framework)
+prebuilt -- supervisor : extends
+prebuilt -- swarm : extends
+prebuilt ..> mcp : uses
+prebuilt ..> mem : uses
+prebuilt ..> evals : uses for testing
+
+@enduml

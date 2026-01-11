@@ -1,0 +1,65 @@
+@startuml
+title Blackboard System Control Flow
+
+state "input" as input #LightBlue
+state "controller" as controller #Gold
+state "order_history_agent" as order_history #LightGreen
+state "policy_check_agent" as policy_check #LightGreen
+state "sentiment_analyzer_agent" as sentiment #LightGreen
+state "final_decision" as final_decision #Orange
+state "output" as output #LightBlue
+
+[*] --> input
+
+input --> controller
+
+controller --> order_history : if product_info empty
+controller --> policy_check : if return_policy empty
+controller --> sentiment : if customer_sentiment empty
+controller --> final_decision : if all data present
+
+order_history --> controller
+policy_check --> controller
+sentiment --> controller
+
+final_decision --> output
+output --> [*]
+
+' Notes moved below the flow diagram
+note bottom of controller
+<b>Controller Logic:</b>
+Checks blackboard state and
+decides which agent to
+activate next based on
+missing information
+end note
+
+note bottom of order_history
+<b>Writes to blackboard:</b>
+product_info field
+end note
+
+note bottom of policy_check
+<b>Writes to blackboard:</b>
+return_policy field
+end note
+
+note bottom of sentiment
+<b>Writes to blackboard:</b>
+customer_sentiment field
+end note
+
+note bottom of final_decision
+<b>Synthesizes final answer</b>
+from all blackboard data
+end note
+
+' Color legend
+' legend right
+'   <color:#LightBlue>Input/Output</color>
+'   <color:#Gold>Controller</color>
+'   <color:#LightGreen>Knowledge Sources</color>
+'   <color:#Orange>Final Processing</color>
+' end legend
+
+@enduml
