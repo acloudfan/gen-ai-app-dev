@@ -1,5 +1,5 @@
 # Industry news research agent
-# Carries out the websearch to find news articles on the specified industry.
+# Agent carries out the websearch to find news articles on the specified industry.
 # It uses the content of the articles to generate an industry outlook report.
 
 # TOOL
@@ -13,11 +13,23 @@ from langchain_core.messages import HumanMessage
 
 from typing import List
 from pydantic import BaseModel, Field
+from enum import Enum
 
+# Tool for the agent
 from langchain_tavily import TavilySearch
 
+# Stock outlook decision
+class DecisionEnum(str, Enum):
+    BUY = "BUY"
+    HOLD = "HOLD"
+    SELL = "SELL"
+    
 # Structured output format
 class IndustryNewsResearchReport(BaseModel):
+    decision: DecisionEnum = Field(
+        ...,
+        description="Decision on whether to 'BUY', 'HOLD', or 'SELL' stock"
+    )
     report: str = Field(
         ...,
         description="A concise summary for the stock outlook based on the latest news."
@@ -68,11 +80,31 @@ def create_industry_research_agent(chat_llm, name = "industry-news-research-agen
         >>> report = research_agent.run("AAPL")
     """
 
-    prompt = """You are an expert in understanding the stocke trends in a given industry sector. 
-                You do this by analyzing major reports about the specified industry. 
-                Based on your analysis you project the impact on stocks of those companies in the industry.
-                You will be given a stock ticker symbol or the industry sector to research.
-                If you are asked to analyze the stock ticker,  start by getting the stock's industry sector"""
+    # prompt = """You are an expert in understanding the stock trends in a given industry sector. 
+    #             You do this by analyzing major reports about the specified industry. 
+    #             Based on your analysis you project the impact on stocks of those companies in the industry.
+    #             You will be given a stock ticker symbol or the industry sector to research.
+    #             If you are asked to analyze the stock ticker,  start by getting the stock's industry sector followed by providing a decision to BUY, SELL or HOLD the stock."""
+
+    prompt = """
+        You are an expert in understanding the stock trends in a given industry sector.
+        
+        Analyze the major reports about the specified industry and provide a JSON object exactly matching this schema:
+        
+        {
+          "report": string,
+          "industry": string,
+          "reasons": string[],
+          "decision": "BUY" | "HOLD" | "SELL",
+          "confidence_score": number (0.0 to 1.0)
+        }
+        
+        Rules:
+        - All fields are mandatory.
+        - "decision" must be exactly one of: BUY, HOLD, SELL (uppercase, no extra spaces)
+        - Do not include any text outside the JSON
+        - Even if uncertain, you must choose one of BUY, HOLD, SELL
+        """
 
     web_search_with_tavily = TavilySearch(
         max_results=5,

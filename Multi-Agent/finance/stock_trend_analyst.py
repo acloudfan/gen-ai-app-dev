@@ -1,6 +1,5 @@
 # Stock performance analysis
-# Gets the stock data over the years, learns the trends and makes determination on whether 
-# current state of the stock indicates a higher price/ lower price, or stable price in near future
+# Agent uses the Yahoo Finance API to get the news stock trend
 
 # Tools
 # ```pip install --upgrade --quiet  yfinance```
@@ -13,9 +12,16 @@ from langchain_core.messages import HumanMessage
 
 from typing import List
 from pydantic import BaseModel, Field
+from enum import Enum
 
 from langchain_core.tools import tool
 import yfinance as yf
+
+# Stock outlook decision
+class DecisionEnum(str, Enum):
+    BUY = "BUY"
+    HOLD = "HOLD"
+    SELL = "SELL"
 
 # Structured output format
 class StockTrendAnalysis(BaseModel):
@@ -27,6 +33,10 @@ class StockTrendAnalysis(BaseModel):
         ...,
         description="List of supporting reasons or factors that justify the analysis"
     )
+    decision: DecisionEnum = Field(
+        ...,
+        description="Final decision for the stock: BUY or HOLD or SELL"
+    )
     confidence_score: float = Field(
         ...,
         ge=0.0,
@@ -34,7 +44,6 @@ class StockTrendAnalysis(BaseModel):
         description="Confidence score for the prediction, ranging from 0 (low confidence) to 1 (high confidence)"
     )
 
-@tool
 def stock_history_tool(ticker_symbol):
     """
       This tools provides the stock history data.
@@ -69,8 +78,29 @@ def create_stock_trend_analyst_agent(chat_llm, name = "stock-trend-analyst-agent
         - StockTrendAnalysis as its response format
     """
 
-    prompt = """You are an expert in analyzing the stock price trends. You review the stock price history to predict whether the stock price will 
-                be lower, higher or stay the same in near future."""
+    # prompt = """You are an expert in analyzing the stock price trends. You review the stock price history to predict whether the stock price will 
+    #             be lower, higher or stay the same in near future. You MUST provide a decision on whether to BUY, HOLD or SELL the stock.
+    #             You assign a confidence score to your recommendation between 0 and 1"""
+
+    prompt = """
+        You are an expert financial analyst analyzing stock price trends.
+        
+        Analyze the stock's historical prices and provide a JSON object exactly matching this schema:
+        
+        {
+          "analysis": string,
+          "reasons": string[],
+          "decision": "BUY" | "HOLD" | "SELL",
+          "confidence_score": number (0.0 to 1.0)
+        }
+        
+        Rules:
+        - All fields are mandatory.
+        - "decision" must be exactly one of: BUY, HOLD, SELL (uppercase, no extra spaces)
+        - Do not include any text outside the JSON
+        - Even if uncertain, you must choose one of BUY, HOLD, SELL
+        """
+
     
     # Create the agent
     agent = create_react_agent(

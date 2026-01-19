@@ -1,5 +1,5 @@
 # Stock news research agent
-# Carries out the websearch to find news articles on the specified stock tickers.
+# Agent uses the Yahoo Finance New API to get the news for the given article
 # It uses the content of the article to generate a stock outlook report.
 
 # TOOL package dependency
@@ -14,9 +14,16 @@ from langchain_core.messages import HumanMessage
 
 from typing import List
 from pydantic import BaseModel, Field
+from enum import Enum
 
 from langchain_community.tools.yahoo_finance_news import YahooFinanceNewsTool
 
+# Stock outlook decision
+class DecisionEnum(str, Enum):
+    BUY = "BUY"
+    HOLD = "HOLD"
+    SELL = "SELL"
+    
 # Structured output format
 class StockNewsResearchReport(BaseModel):
     report: str = Field(
@@ -26,6 +33,10 @@ class StockNewsResearchReport(BaseModel):
     reasons: List[str] = Field(
         ...,
         description="List of supporting reasons or factors that justify the report"
+    )
+    decision: DecisionEnum = Field(
+        ...,
+        description="Final decision: BUY, HOLD, or SELL"
     )
     confidence_score: float = Field(
         ...,
